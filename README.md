@@ -11,7 +11,7 @@ node_modules:npm插件
 ## 路由设计
 | 路由 | 方法 | get参数 | post参数 | 是否需要登录 | 备注 |
 | --- | --- | --- | --- | --- | --- |
-| / | GET |   |   |   | 渲染首页 |
+| / | GET |   |      | 渲染首页 |
 ## NOTE
 Express获取get请求参数  
 req.query  
