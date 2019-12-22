@@ -7,6 +7,9 @@ views:代渲染视图文件
 public：静态资源  
 node_modules:npm插件  
 
+## 路由设计
+| 1 | 2 | 3 |
+
 ## NOTE
 Express获取get请求参数  
 req.query  
