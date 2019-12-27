@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<html lang="zxx">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title><%- goods.goodsName %></title>
+		<link rel="icon" href="favicon.ico">
+		<!-- JqueryUI -->
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+		<!-- Bootstrap -->
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<!-- Awesome font icons -->
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" media="screen">
+		<!-- Owlcoursel -->
+		<link rel="stylesheet" type="text/css" href="css/owl-coursel/owl.carousel.css">
+		<link rel="stylesheet" type="text/css" href="css/owl-coursel/owl.transitions.css">
+		<!-- Magnific-popup -->
+		<link rel="stylesheet" type="text/css" href="css/magnific-popup/magnific-popup.css">
+		<!-- Magnific-popup -->
+		<link rel="stylesheet" type="text/css" href="css/magnific-popup/magnific-popup.css">
+		<!-- Style -->
+		<link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
+		<!-- Fw -->
+		<link rel="stylesheet" type="text/css" href="css/fw.css" media="screen">
+	</head>
+	<body>
+
+         
+
+
+		<div class="preloader">
+			<i class="fa fa-spinner"></i>
+		</div>
+
+		<!-- Header -->
+		{{ include'./header.html' }}
+
+		<!-- breadcrumb-->
+		<div class="container">
+			<ul class="breadcrumb">
+				<li><a href="#"><i class="fa fa-home m-r-5"></i>Home</a></li>
+				<li><a href="#">Product</a></li>
+				<li><a href="#">Book & Music</a></li>
+				<li>Lorem ipsum dolor</li>
+			</ul>
+		</div>
+		<!-- Product -->
+		<section class="m-t-0 p-b-40"> 
+			<div class="container">
+				<div class="thumb p-30">
+					<div class="row">
+						<!-- Product image gallery -->
+						<div class="col-sm-6 col-md-7">
+							<ul class="thumbnails p-0">
+								<li>
+									<a class="thumbnail img-large image-zoom" href="<%- goods.imgPath %>" title="iPhone">
+										<img src="<%- goods.imgPath %>" alt="iPhone">
+									</a>
+								</li>
+								<li class="image-additional">
+									<a class="thumbnail image-zoom" href="images/sp2.jpg" title="iPhone">
+										<img src="images/sp2.jpg" title="iPhone" alt="iPhone">
+									</a>
+								</li>
+								<li class="image-additional">
+									<a class="thumbnail image-zoom" href="images/sp1.jpg" title="iPhone">
+										<img src="images/sp1.jpg" title="iPhone" alt="iPhone">
+									</a>
+								</li>
+								<li class="image-additional">
+									<a class="thumbnail image-zoom" href="images/sp4.jpg" title="iPhone">
+										<img src="images/sp4.jpg" title="iPhone" alt="iPhone">
+									</a>
+								</li>
+								<li class="image-additional">
+									<a class="thumbnail image-zoom" href="images/sp5.jpg" title="iPhone">
+										<img src="images/sp5.jpg" title="iPhone" alt="iPhone">
+									</a>
+								</li>
+								<li class="image-additional">
+									<a class="thumbnail image-zoom" href="images/sp6.jpg" title="iPhone">
+										<img src="images/sp6.jpg" title="iPhone" alt="iPhone">
+									</a>
+								</li>
+							</ul>
+						</div>
+						<!-- Product decr -->
+						<div class="col-sm-6 col-md-5">
+							<div class="product-pare m-t-xs-60">
+								<h1><%- goods.goodsName %></h1>
+								<ul class="list-unstyled">
+									<li><span>Brand:</span><a href="#"><%- goods.brand %></a></li>
+									<li><span>Age:</span><a href="#"><%- goods.age %></a></li>
+									<li><span>Product Code:</span> <%- goods._id %></li>
+									<li><span>Color:</span> <%- goods.color %></li>
+									<li><span>Made in:</span> <%- goods.madein %></li>
+									<li><span>Availability:</span> <%- goods.availability %></li>
+								</ul>
+								<p class="product-price">￥<%- goods.price %></p>
+								<!-- <div class="quantily-wrap">
+									<label class="control-label" for="input-quantity">Qty</label>
+									<input type="number" value="1" size="2" id="input-quantity" class="form-control form-item">
+								</div> -->
+								<a  href="/add-to-cart/?id=<%- goods._id %>" type="button" class="btn ht-btn ht-btn-3x bg-4 m-t-0">Add to Cart</a>
+								<div class="m-t-30">
+								<a href="#">0 reviews</a> / <a href="#">Write a review</a>
+								</div>
+							</div>
+						</div>
+					</div><!-- End row -->
+				</div>
+				<!-- Tabs -->
+				<div class="ht-tabs m-t-60">
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active m-l-30">
+							<a href="#tab-description" aria-controls="tab-description" role="tab" data-toggle="tab">Description</a>
+						</li>
+						<li role="presentation">
+							<a href="#tab-review" aria-controls="tab-review" role="tab" data-toggle="tab">Review(0)</a>
+						</li>
+					</ul>
+					<!-- Tab panes -->
+					<div class="tab-content thumb p-30">
+						<div role="tabpanel" class="tab-pane active" id="tab-description">
+							<%- goods.description %>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="tab-review">
+							<form class="form-horizontal">
+								<div>
+									<p>There are no reviews for this product.</p>
+								</div>
+								<h3>Write a review</h3>
+								<div class="form-group required">
+									<div class="col-sm-12">
+										<label class="control-label m-b-10" for="input-name">Your Name</label>
+										<input type="text" name="name" value="" id="input-name" class="form-control form-item">
+									</div>
+								</div>
+								<div class="form-group required">
+									<div class="col-sm-12">
+										<label class="control-label m-b-10" for="input-review">Your Review</label>
+										<textarea name="text" rows="5" id="input-review" class="form-control form-item"></textarea>
+										<div class="help-block">
+											<span class="text-danger">Note:</span> HTML is not translated!
+										</div>
+									</div>
+								</div>
+								<div class="form-group required">
+									<div class="col-sm-12">
+										<label class="control-label">Rating</label>
+											Bad
+										<input type="radio" name="rating" value="1">
+										<input type="radio" name="rating" value="2">
+										<input type="radio" name="rating" value="3">
+										<input type="radio" name="rating" value="4">
+										<input type="radio" name="rating" value="5">
+											Good
+									</div>
+								</div>
+								<div class="buttons clearfix">
+									<div class="pull-right">
+										<button type="button" id="button-review" data-loading-text="Loading..." class="btn btn-primary">Continue</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div><!-- End tabs -->
+			</div>
+		</section>
+		<!-- Product relaed -->
+		<section class="m-b-50">
+			<div class="container product-bor">
+				<div class="thumb p-30 p-b-0">
+					<h3 class="title">Product Related <br> 为您推荐</h3>
+					<div class="row">
+						<div class="col-sm-6 col-md-4 col-lg-3">
+							<!-- Product item -->
+							<div class="product-item hover-img">
+								<a href="product_detail.html" class="product-img">
+									<img src="images/sp3.jpg" alt="image">
+								</a>
+								<div class="product-caption">
+									<h4 class="product-name"><a href="#">Lorem ipsum dolor sit amet</a></h4>
+									<div class="product-price-group">
+										<span class="product-price-old">$12,00</span>
+										<span class="product-price">$76,00</span>
+									</div>
+								</div>
+								<div class="absolute-caption">
+									<a href="#"><i class="fa fa-heart-o"></i></a>
+									<a href="#"><i class="fa fa-exchange"></i></a>
+									<a href="#"><i class="fa fa-cart-plus"></i></a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-4 col-lg-3">
+							<!-- Product item -->
+							<div class="product-item hover-img">
+								<a href="product_detail.html" class="product-img">
+									<img src="images/sp1.jpg" alt="image">
+								</a>
+								<div class="product-caption">
+									<h4 class="product-name"><a href="#">Lorem ipsum dolor sit amet</a></h4>
+									<div class="product-price-group">
+										<span class="product-price-old">$12,00</span>
+										<span class="product-price">$6,00</span>
+									</div>
+								</div>
+								<div class="absolute-caption">
+									<a href="#"><i class="fa fa-heart-o"></i></a>
+									<a href="#"><i class="fa fa-exchange"></i></a>
+									<a href="#"><i class="fa fa-cart-plus"></i></a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-4 col-lg-3">
+							<!-- Product item -->
+							<div class="product-item hover-img">
+								<a href="product_detail.html" class="product-img">
+									<img src="images/sp5.jpg" alt="image">
+								</a>
+								<div class="product-caption">
+									<h4 class="product-name"><a href="#">Lorem ipsum dolor sit amet</a></h4>
+									<div class="product-price-group">
+										<span class="product-price-old">$12,00</span>
+										<span class="product-price">$76,00</span>
+									</div>
+								</div>
+								<div class="absolute-caption">
+									<a href="#"><i class="fa fa-heart-o"></i></a>
+									<a href="#"><i class="fa fa-exchange"></i></a>
+									<a href="#"><i class="fa fa-cart-plus"></i></a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-4 col-lg-3">
+							<!-- Product item -->
+							<div class="product-item hover-img">
+								<a href="product_detail.html" class="product-img">
+									<img src="images/sp2.jpg" alt="image">
+								</a>
+								<div class="product-caption">
+									<h4 class="product-name"><a href="#">Lorem ipsum dolor sit amet</a></h4>
+									<div class="product-price-group">
+										<span class="product-price-old">$12,00</span>
+										<span class="product-price">$76,00</span>
+									</div>
+								</div>
+								<div class="absolute-caption">
+									<a href="#"><i class="fa fa-heart-o"></i></a>
+									<a href="#"><i class="fa fa-exchange"></i></a>
+									<a href="#"><i class="fa fa-cart-plus"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Process -->
+		{{ include'./process.html' }}
+
+		<!-- Footer -->
+		{{ include'./footer.html' }}
+
+		<!-- jQuery -->
+		<script src="js/jquery/jquery-2.2.4.min.js"></script>
+		<!-- JqueryUI -->
+		<script src="js/jquery/jquery-ui.js"></script>
+		<!-- Bootstrap -->
+		<script src="js/bootstrap/bootstrap.min.js"></script>
+		<!-- Owl-coursel -->
+		<script src="js/owl-coursel/owl.carousel.js"></script>
+		<!-- Magnific-popup -->
+		<script src="js/magnific-popup/jquery.magnific-popup.min.js"></script>
+		<!-- Script -->
+		<script src="js/script.js"></script>
+	</body>
+</html>
+

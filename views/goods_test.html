@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GOODS</title>
+</head>
+<body>
+    <% for (var i=0; i < lists.length; i++) {%>
+<p><%- lists[i].goodsName%></p>
+<img src="<%= lists[i].imgPath %>"/>
+<br>
+<p>
+    <%- lists[i].description %>
+</p>
+<% } %>
+<p>
+<%- lists.length %>
+</p>
+</body>
+</html>

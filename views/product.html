@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Product</title>
+	<link rel="icon" href="favicon.ico">
+	<!-- JqueryUI -->
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+	<!-- Bootstrap -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<!-- Awesome font icons -->
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" media="screen">
+	<!-- Owlcoursel -->
+	<link rel="stylesheet" type="text/css" href="css/owl-coursel/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="css/owl-coursel/owl.transitions.css">
+	<!-- Magnific-popup -->
+	<link rel="stylesheet" type="text/css" href="css/magnific-popup/magnific-popup.css">
+	<!-- Style -->
+	<link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
+	<!-- Fw -->
+	<link rel="stylesheet" type="text/css" href="css/fw.css" media="screen">
+</head>
+
+<body>
+
+
+
+
+	<div class="preloader">
+		<i class="fa fa-spinner"></i>
+	</div>
+
+	<!-- Header -->
+	{{ include'./header.html' }}
+
+	<div class="container">
+		<ul class="breadcrumb">
+			<li><a href="index"><i class="fa fa-home m-r-5"></i>Home</a></li>
+			<li>Product</li>
+		</ul>
+	</div>
+	<!-- Product page -->
+	<div class="container">
+		<div class="thumb p-30">
+			<h3 class="title">Product</h3>
+			<div class="row filter-bar">
+				<div class="col-sm-4 col-md-7">
+					<div class="btn-group btn-group-sm">
+						<button type="button" id="list-view" class="btn btn-default" data-toggle="tooltip" title=""
+							data-original-title="List">
+							<i class="fa fa-th-list"></i>
+						</button>
+						<button type="button" id="grid-view" class="btn btn-default active" data-toggle="tooltip"
+							title="" data-original-title="Grid">
+							<i class="fa fa-th"></i>
+						</button>
+					</div>
+				</div>
+				<div class="col-sm-5 col-md-3">
+					<div class="form-group input-group input-group-sm">
+						<label class="input-group-addon" for="input-sort">Sort By:</label>
+						<select id="input-sort" class="form-control form-item" onchange="location = this.value;">
+							<option value="#" selected="selected">Default</option>
+							<option value="#">Name (A - Z)</option>
+							<option value="#">Name (Z - A)</option>
+							<option value="#">Price (Low &gt; High)</option>
+							<option value="#">Price (High &gt; Low)</option>
+							<option value="#">Rating (Highest)</option>
+							<option value="#">Rating (Lowest)</option>
+							<option value="#">Model (A - Z)</option>
+							<option value="#">Model (Z - A)</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-sm-3 col-md-2">
+					<div class="form-group input-group input-group-sm">
+						<label class="input-group-addon" for="input-limit">Show:</label>
+						<select id="input-limit" class="form-control form-item" onchange="location = this.value;">
+							<option value="#" selected="selected">15</option>
+							<option value="#">25</option>
+							<option value="#">50</option>
+							<option value="#">75</option>
+							<option value="#">100</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="row product-bor">
+
+				<!-- 商品陈列 -->
+				<% for (var i = 0; i < lists.length; i++) { %>
+				<div class="col-sm-6 col-md-4 col-lg-3">
+					<!-- Product item -->
+					<div class="product-item hover-img">
+						<a href="product_detail?id=<%- lists[i]._id %>" class="product-img"><img src="<%- lists[i].imgPath%>"
+							style="height:200px" alt="<%- lists[i].imgPath%>"></a>
+						<div class="product-caption">
+							<h4 class="product-name"><a href="product_detail?id=<%- lists[i]._id %>"><%- lists[i].goodsName %></a></h4>
+							<div class="product-price-group">
+								<!-- <span class="product-price-old">￥12,00</span> -->
+								<span class="product-price">￥<%- lists[i].price%></span>
+							</div>
+						</div>
+						<div class="absolute-caption">
+							<a href="#"><i class="fa fa-heart-o"></i></a>
+							<!-- <a href="#"><i class="fa fa-exchange"></i></a> -->
+							<a href="/add-to-cart/?id=<%- lists[i]._id %>"><i class="fa fa-cart-plus"></i></a>
+						</div>
+					</div>
+				</div>
+				<% } %>
+			</div>
+
+
+			<nav aria-label="Page navigation">
+				<ul class="pagination ht-pagination m-t-30">
+					<li>
+						<a href="#" aria-label="Previous">
+							<span aria-hidden="true">Prev</span>
+						</a>
+					</li>
+					<li class="active"><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li>
+						<a href="#" aria-label="Next">
+							<span aria-hidden="true">Next</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+
+	<!-- Process -->
+	{{ include'./process.html' }}
+
+	<!-- Footer -->
+	{{ include'./footer.html' }}
+
+	<!-- jQuery -->
+	<script src="js/jquery/jquery-2.2.4.min.js"></script>
+	<!-- JqueryUI -->
+	<script src="js/jquery/jquery-ui.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap/bootstrap.min.js"></script>
+	<!-- Owl-coursel -->
+	<script src="js/owl-coursel/owl.carousel.js"></script>
+	<!-- Magnific-popup -->
+	<script src="js/magnific-popup/jquery.magnific-popup.min.js"></script>
+	<!-- Script -->
+	<script src="js/script.js"></script>
+</body>
+
+</html>

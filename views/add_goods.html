@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Goods</title>
+</head>
+
+<body>
+    <form id="addgoods_form" action="/add_goods">
+        GoodsName:<br>
+        <input type='text' name='goodsName' value="">
+        <br>
+        Brand:<br>
+        <input type='text' name='brand' value="">
+        <br>
+        Age:<br>
+        <input type='text' name='age' value="all">
+        <br>
+        Color:<br>
+        <input type='text' name='color' value="">
+        <br>
+        Made in:<br>
+        <input type='text' name='madein' value="">
+        <br>
+        Availability:<br>
+        <input type='text' name='availability' value="">
+        <br>
+        ImagePath:<br>
+        <input type='text' name='imgPath' value="">
+        <br>
+        Description:<br>
+        <input type='text' name='description' value="">
+        <br>
+        Price:<br>
+        <input type='text' name='price' value="">
+        <br>
+        <button type='submit' >Add</button>
+    </form>
+
+
+    <!-- 表单数据序列化，ajax 异步提交 -->
+    <!-- <script src="/node_modules/jquery/jdist/jquery.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        $('#addgoods_form').on('submit', function (e) {
+            e.preventDefault()
+            var formData = $(this).serialize()
+            // console.log(formData)
+            $.ajax({
+                url: '/add_goods',
+                type: 'post',
+                data: formData,
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data)
+                    var err_code = data.err_code
+                    if (err_code === 0) {
+                        // 提交成功
+                        window.alert('Add success')
+                        // 执行跳转回页面
+                        window.location.href = '/add_goods'
+                    } else if (err_code === 1) {
+                        window.alert('Goods already exists')
+                    } else if (err_code === 500) {
+                        window.alert('Server bussy...')
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

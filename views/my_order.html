@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Order订单</title>
+    <link rel="icon" href="favicon.ico">
+    <!-- JqueryUI -->
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <!-- Awesome font icons -->
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" media="screen">
+    <!-- Owlcoursel -->
+    <link rel="stylesheet" type="text/css" href="css/owl-coursel/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="css/owl-coursel/owl.transitions.css">
+    <!-- Magnific-popup -->
+    <link rel="stylesheet" type="text/css" href="css/magnific-popup/magnific-popup.css">
+    <!-- Style -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
+    <!-- Fw -->
+    <link rel="stylesheet" type="text/css" href="css/fw.css" media="screen">
+</head>
+
+<body>
+
+
+
+    <div class="preloader">
+        <i class="fa fa-spinner"></i>
+    </div>
+
+    <!-- Header -->
+    {{include'./header.html'}}
+
+    <!-- Breadcrumd -->
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="index"><i class="fa fa-home m-r-5"></i>Home</a></li>
+            <li>Order订单</li>
+        </ul>
+    </div>
+    <!-- Cart -->
+    <section class="m-t-0">
+        <div class="container">
+            <div class="thumb p-30">
+
+                {{ if products }}
+                <div class="row">
+                    <h3 class="title">Cart 购物车</h3>
+                    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+                        <ul class="list-group">
+                            {{ each products }}
+                            <li class="list-group-item">
+                                <span class="badge"> {{ products[$index].qty }} </span>
+                                <strong> {{ products[$index].item.goodsName }} </strong>
+                                <span class="label label-success">￥{{ products[$index].item.price }}</span>
+                                <div class="btn-group">
+                                    <button class="btn btn-primary btn-xs dropdown-toggle" type="button"
+                                        data-toggle="dropdown">Action
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="product_detail?id={{ products[$index].item._id }}">Detail</a></li>
+                                        <li><a href="#">Remove</a></li>
+                                </div>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+                        <strong>Total:￥{{ totalPrice }}</strong>
+                    </div>
+                </div>
+                {{if (session.user != null) }}
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+                        <a href="/checkout" type="button" class="btn btn-success">Checkout</a>
+                    </div>
+                </div>
+                {{/if}}
+                <br>
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+                        <a href="/remove_all" type="button" class="btn btn-success"
+                            style="color:rgb(253, 43, 130)">Remove All</a href="remove_all">
+                    </div>
+                </div>
+
+                {{ else }}
+
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+                        <h2>No Item in Cart</h2>
+                        <a href="/product">And go to see something?<br>去逛逛？</a>
+                    </div>
+                </div>
+                {{/if }}
+
+                <!-- <div class="col-sm-5">
+                    <img src="images/nursery-decoration-1963815_960_720.jpg" title="iPhone" alt="iPhone">
+                </div> -->
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    {{ include'./process.html' }}
+
+
+    <!-- Footer -->
+    {{ include'./footer.html' }}
+
+    <!-- jQuery -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- JqueryUI -->
+    <script src="js/jquery/jquery-ui.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- Owl-coursel -->
+    <script src="js/owl-coursel/owl.carousel.js"></script>
+    <!-- Magnific-popup -->
+    <script src="js/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <!-- Script -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>

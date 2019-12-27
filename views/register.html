@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Register</title>
+	<link rel="icon" href="favicon.ico">
+	<!-- JqueryUI -->
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+	<!-- Bootstrap -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<!-- Awesome font icons -->
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" media="screen">
+	<!-- Owlcoursel -->
+	<link rel="stylesheet" type="text/css" href="css/owl-coursel/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="css/owl-coursel/owl.transitions.css">
+	<!-- Magnific-popup -->
+	<link rel="stylesheet" type="text/css" href="css/magnific-popup/magnific-popup.css">
+	<!-- Style -->
+	<link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
+	<!-- Fw -->
+	<link rel="stylesheet" type="text/css" href="css/fw.css" media="screen">
+</head>
+
+<body>
+
+
+
+
+	<div class="preloader">
+		<i class="fa fa-spinner"></i>
+	</div>
+
+	<!-- Header -->
+	{{ include'./header.html' }}
+
+	<!-- breadcrumb -->
+	<div class="container">
+		<ul class="breadcrumb">
+			<li><a href="#"><i class="fa fa-home m-r-5"></i>Home</a></li>
+			<li>Register</li>
+		</ul>
+	</div>
+	<!-- Register -->
+	<section class="m-t-0">
+		<div class="container">
+			<div class="thumb p-30">
+				<div id="content">
+					<h3 class="title">New user register</h3>
+					<p>If you already have an account with us, please login at the <a href="/login"
+							class="color-2">login
+							page</a>.</p>
+					<form id="register_form" action="/register" method="post" enctype="multipart/form-data"
+						class="form-horizontal">
+						<fieldset id="account">
+							<legend>Your Personal Details</legend>
+							<!--form-group-->
+							<div class="form-group required">
+								<label class="col-sm-2 control-label">User Group</label>
+								<div class="col-sm-10">
+									<div class="radio">
+										<label>
+											<input type="radio" name="group" value="0" checked="checked">
+											Customer
+										</label>
+									</div>
+									<div class="radio">
+										<label>
+											<input type="radio" name="group" value="1">
+											Admin
+										</label>
+									</div>
+								</div>
+							</div>
+							<!--form-group-->
+							<!-- 用户注册邮箱 -->
+							<div class="form-group required">
+								<label class="col-sm-2 control-label" for="input-email">E-Mail</label>
+								<div class="col-sm-10">
+									<input type="email" name="email" value="" placeholder="E-Mail" id="input-email"
+										class="form-control form-item">
+								</div>
+							</div>
+
+							<!--form-group-->
+							<!-- 用户昵称 -->
+							<div class="form-group required">
+								<label class="col-sm-2 control-label" for="input-nicktname">Nick Name</label>
+								<div class="col-sm-10">
+									<input type="text" name="nickname" value="" placeholder="Nick Name"
+										id="input-nicktname" class="form-control form-item">
+								</div>
+							</div>
+						</fieldset>
+
+
+						<fieldset>
+							<legend>Your Password</legend>
+							<!--form-group-->
+							<div class="form-group required">
+								<label class="col-sm-2 control-label" for="input-password">Password</label>
+								<div class="col-sm-10">
+									<input type="password" name="password" value="" placeholder="Password"
+										id="input-password" class="form-control form-item">
+								</div>
+							</div>
+							<!--form-group-->
+							<!-- 二次密码核对 -->
+							<!-- <div class="form-group required">
+								<label class="col-sm-2 control-label" for="input-confirm">Password Confirm</label>
+								<div class="col-sm-10">
+									<input type="password" name="confirm" value="" placeholder="Password Confirm"
+										id="input-confirm" class="form-control form-item">
+								</div>
+							</div> -->
+							<!--form-group-->
+						</fieldset>
+
+
+						<div class="buttons">
+							<div class="">
+								<input type="checkbox" name="agree" class="m-r-10" value="1"> I have read and agree to
+								the
+								<a href="https://terms.alicdn.com/legal-agreement/terms/suit_bu1_b2b/suit_bu1_b2b201703271337_94551.html"
+									target="blank" class="agree"><b>Privacy Policy</b></a>
+								<br />
+								<button type="submit" class="btn ht-btn bg-3 m-t-30">Register</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- Process -->
+	{{ include'./process.html' }}
+
+	<!-- Footer -->
+	{{ include'./footer.html' }}
+
+
+	<!-- jQuery -->
+	<script src="js/jquery/jquery-2.2.4.min.js"></script>
+	<!-- JqueryUI -->
+	<script src="js/jquery/jquery-ui.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap/bootstrap.min.js"></script>
+	<!-- Owl-coursel -->
+	<script src="js/owl-coursel/owl.carousel.js"></script>
+	<!-- Magnific-popup -->
+	<script src="js/magnific-popup/jquery.magnific-popup.min.js"></script>
+	<!-- Script -->
+	<script src="js/script.js"></script>
+
+	<!-- 表单数据序列化，ajax 异步提交 -->
+	<!-- <script src="/node_modules/jquery/dist/jquery.js"></script> -->
+	<script>
+		$('#register_form').on('submit', function (e) {
+			e.preventDefault()
+			var formData = $(this).serialize()
+			// console.log(formData)
+			$.ajax({
+				url: '/register',
+				type: 'post',
+				data: formData,
+				dataType: 'json',
+				success: function (data) {
+					console.log(data)
+					var err_code = data.err_code
+					if (err_code === 0) {
+						// 注册成功
+						window.alert('Register success')
+						// 执行跳转至主页
+						window.location.href = '/index'
+					} else if (err_code === 1) {
+						window.alert('Email or password already exists')
+					} else if (err_code === 500) {
+						window.alert('Server bussy...')
+					}
+				}
+			})
+		})
+	</script>
+</body>
+
+</html>

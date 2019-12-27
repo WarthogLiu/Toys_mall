@@ -1,0 +1,29 @@
+{
+  "name": "Graduation_Project",
+  "version": "1.0.0",
+  "description": "Graduation project of DJTU 2020",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WarthogLiu/Graduation_Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WarthogLiu/Graduation_Project/issues"
+  },
+  "homepage": "https://github.com/WarthogLiu/Graduation_Project#readme",
+  "dependencies": {
+    "art-template": "^4.13.2",
+    "body-parser": "^1.19.0",
+    "connect-mongo": "^3.2.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-art-template": "^1.0.1",
+    "express-handlebars": "^3.1.0"
+  }
+}

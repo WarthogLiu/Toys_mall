@@ -1,0 +1,13 @@
+<!-- 购物车 -->
+<div class="cart dropdown">
+    <a href="/cart" class="cart-item dropdown-toggle" id="dropdownMenu2">
+        <!-- 如果购物车为空，显式0 以避免因未定义而报错 -->
+        {{ if (session.cart == null)}}
+        <span>0</span><i class="fa fa-cart-plus"></i>
+        {{else}}
+        <span>{{session.cart.totalQty}}</span><i class="fa fa-cart-plus"></i>
+        {{/if}}
+    </a>
+
+    
+</div>

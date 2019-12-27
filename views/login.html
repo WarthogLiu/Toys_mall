@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login</title>
+	<link rel="icon" href="favicon.ico">
+	<!-- JqueryUI -->
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+	<!-- Bootstrap -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<!-- Awesome font icons -->
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" media="screen">
+	<!-- Owlcoursel -->
+	<link rel="stylesheet" type="text/css" href="css/owl-coursel/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="css/owl-coursel/owl.transitions.css">
+	<!-- Magnific-popup -->
+	<link rel="stylesheet" type="text/css" href="css/magnific-popup/magnific-popup.css">
+	<!-- Style -->
+	<link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
+	<!-- Fw -->
+	<link rel="stylesheet" type="text/css" href="css/fw.css" media="screen">
+</head>
+
+<body>
+
+	<div class="preloader">
+		<i class="fa fa-spinner"></i>
+	</div>
+
+	<!-- Header -->
+	{{ include'./header.html' }}
+
+	<div class="container">
+		<ul class="breadcrumb">
+			<li><a href="#"><i class="fa fa-home m-r-5"></i>Home</a></li>
+			<li>Login</li>
+		</ul>
+	</div>
+
+	<!-- Login page -->
+	<div class="container">
+		<div class="thumb p-60">
+			<div id="content">
+				<div class="row">
+					<div class="col-sm-12 col-md-6 col-md-offset-3">
+						<h3 class="title">Login</h3>
+						<p><strong>I am a returning customer</strong></p>
+						<form id="login_form" action="/login" method="post" enctype="multipart/form-data">
+							<div class="form-group">
+								<label class="control-label f-normal" for="input-email">E-Mail Address</label>
+								<input type="text" name="email" value="" placeholder="E-Mail Address" id="input-email"
+									class="form-control form-item">
+							</div>
+							<div class="form-group m-t-15">
+								<label class="control-label f-normal" for="input-password">Password</label>
+								<input type="password" name="password" value="" placeholder="Password"
+									id="input-password" class="form-control form-item">
+								<a class="color-7" href="contact"
+									title='Please contact the administrator 请联系管理员'>Forgotten Password</a>
+								<!-- 忘记密码将联络管理员 -->
+							</div>
+							<button type="submit" class="btn ht-btn bg-3 m-t-10">Login</button>
+							<a href="/register" type="" class="btn ht-btn bg-4 m-t-10">Register</a>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Process -->
+	{{ include'./process.html' }}
+
+	<!-- Footer -->
+	{{ include'./footer.html' }}
+
+	<!-- jQuery -->
+	<script src="js/jquery/jquery-2.2.4.min.js"></script>
+	<!-- JqueryUI -->
+	<script src="js/jquery/jquery-ui.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap/bootstrap.min.js"></script>
+	<!-- Owl-coursel -->
+	<script src="js/owl-coursel/owl.carousel.js"></script>
+	<!-- Magnific-popup -->
+	<script src="js/magnific-popup/jquery.magnific-popup.min.js"></script>
+	<!-- Script -->
+	<script src="js/script.js"></script>
+
+
+	<!-- 表单数据序列化，ajax 异步提交 -->
+	<!-- <script src="/node_modules/jquery/dist/jquery.js"></script> -->
+	<script>
+		$('#login_form').on('submit', function (e) {
+			e.preventDefault()
+			var formData = $(this).serialize()
+			console.log(formData)
+			$.ajax({
+				url: '/login',
+				type: 'post',
+				data: formData,
+				dataType: 'json',
+				success: function (data) {
+					// console.log(data)
+					var err_code = data.err_code
+					var nickname = data.nickname
+					if (err_code === 0) {
+						// 普通用户登陆成功
+						window.alert('Wellcome   ' + nickname)
+						// 执行跳转至主页
+						window.location.href = '/index'
+					} else if (err_code === 2) {
+						// 管理员登陆成功
+						window.alert('Wellcome   ' + nickname)
+						// 执行跳转至后台管理页面
+						window.location.href = '/admin'
+					} else if (err_code === 1) {
+						window.alert('Mail or password is incorrect')
+					} else if (err_code === 500) {
+						window.alert('Server bussy...')
+					}
+				}
+			})
+		})
+	</script>
+</body>
+
+</html>
