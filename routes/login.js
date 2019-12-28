@@ -43,7 +43,7 @@ login.post('/login', function (req, res) {
         req.session.user = user
         // console.log(req.session.user)
         if (user.group == 0) {
-            res.status(200).json({
+            return res.status(200).json({
                 err_code: 0,
                 nickname: user.nickname,
                 message: 'OK Customer'

@@ -6,12 +6,13 @@ const User = require('../models/user')
 const search = express.Router()
 
 search.get('/search', function (req, res) {
-    console.log(req.query)
-    var val = String(req.query.search)
+    console.log(req.query);
+    var val = String(req.query.search);
+    // var Nval = Number(val);
     Goods.find({
         $or: [
             {
-                goodsName: { $regex: val, $options: '$i' }
+                goodsName: { $regex: val, $options: '$i' }  // $i不区分大小写
             },
             {
                 brand: { $regex: val, $options: '$i' }
@@ -26,7 +27,7 @@ search.get('/search', function (req, res) {
                 madein: { $regex: val, $options: '$i' }
             }
         ]
-    },  function (err, data) {
+    }, function (err, data) {
         if (err) {
             return res.status(500).json({
                 success: false,
@@ -38,7 +39,7 @@ search.get('/search', function (req, res) {
             res.render('product.html', {
                 user: req.session.user,
                 lists: data,
-                val:val
+                val: val
             });
         };
     });

@@ -13,7 +13,7 @@ cart.get('/add-to-cart/:id', function (req, res, next) {
     var productId = req.params.id;
     var cart = new Cart(req.session.cart ? req.session.cart : {});
 
-    Product.findById(productId, function (err, product) {
+    Goods.findById(productId, function (err, product) {
         if (err) {
             return res.redirect('/index.htlm');
         }
@@ -50,6 +50,10 @@ cart.get('/cart', function (req, res, next) {
 cart.get('/remove_all', function(req,res){
     req.session.cart = null;
     res.redirect('/cart')
-})
+});
+
+cart.get('/remove/:id',function(req,rex){
+    console.log(req.param.id)
+});
 
 module.exports = cart
