@@ -40,8 +40,12 @@ var goodsSchema = new Goods_schema({
         require: true
     },
     price: {
-        type: Number,
+        type: String,
         require: true
+    },
+    create_time: {
+        type: Date,
+        default: Date.now
     }
 });
 

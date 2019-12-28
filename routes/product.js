@@ -10,7 +10,8 @@ product.get('/product', function (req, res) {
     Goods.find(function(err, docs, next){
         res.render('product.html', {
             user: req.session.user,
-            lists:docs
+            lists:docs,
+            val: "All Products Here"
         });
     })
 

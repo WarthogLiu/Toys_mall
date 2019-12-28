@@ -14,6 +14,7 @@ const product_detail = require('./routes/product_detail')
 const product = require('./routes/product')
 const checkout = require('./routes/checkout')
 const my_order = require('./routes/my_order')
+const Search = require('./routes/search')
 // const shopping_cart = require('./routes/shopping_cart')
 const bodyParser = require('body-parser')
 const session = require('express-session')
@@ -91,6 +92,7 @@ app.use(function (req, res, next) {
   next();
 })
 //把路由挂载到app中
+app.use(Search)
 app.use(my_order)
 app.use(checkout)
 app.use(cart)
