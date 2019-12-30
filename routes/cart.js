@@ -20,7 +20,8 @@ cart.get('/add-to-cart/:id', function (req, res, next) {
         cart.add(product, product.id);
         req.session.cart = cart;
         console.log(req.session.cart);
-        res.redirect('/index.html');
+        // 添价完后跳转
+        // res.redirect('/index.html');
     });
 });
 

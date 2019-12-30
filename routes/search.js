@@ -25,6 +25,12 @@ search.get('/search', function (req, res) {
             },
             {
                 madein: { $regex: val, $options: '$i' }
+            },
+            {
+                gender_trend:{ $regex: val, $options: '$i' }
+            },
+            {
+                discount:{ $regex: val, $options: '$i' }
             }
         ]
     }, function (err, data) {

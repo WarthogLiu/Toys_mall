@@ -19,7 +19,8 @@ login.post('/login', function (req, res) {
     // console.log(req.body)
     //
     var body = req.body
-    //
+    console.log(req.body)
+    
     User.findOne({
         //与 查询
         email: body.email,
@@ -41,7 +42,8 @@ login.post('/login', function (req, res) {
 
         //用户存在，登陆成功， 通过 session 记录登陆状态
         req.session.user = user
-        // console.log(req.session.user)
+        // console.log(typeof(req.session.user.group))
+        // 用户登陆跳转
         if (user.group == 0) {
             return res.status(200).json({
                 err_code: 0,
@@ -49,6 +51,7 @@ login.post('/login', function (req, res) {
                 message: 'OK Customer'
             })
         }
+        // 管理员登陆跳转
         res.status(200).json({
             err_code: 2,
             nickname: user.nickname,

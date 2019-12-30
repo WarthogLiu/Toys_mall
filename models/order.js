@@ -31,6 +31,14 @@ var orderSchema = new Order_schema({
     address:{
         type:String,
         require:true
+    },
+    status:{
+        type:String,
+        enum:['paid', 'received', 'cancelled', 'closed']
+    },
+    create_time: {
+        type: Date,
+        default: Date.now
     }
 });
 

@@ -169,13 +169,19 @@
 				data: formData,
 				dataType: 'json',
 				success: function (data) {
-					console.log(data)
+					// console.log(data)
 					var err_code = data.err_code
+					var nickname = data.nickname
 					if (err_code === 0) {
 						// 注册成功
-						window.alert('Register success')
+						window.alert('Register Success')
 						// 执行跳转至主页
 						window.location.href = '/index'
+					} else if (err_code === 2) {
+						// 管理员登陆成功
+						window.alert('Register Success  '+nickname)
+						// 执行跳转至后台管理页面
+						window.location.href = '/admin'
 					} else if (err_code === 1) {
 						window.alert('Email or password already exists')
 					} else if (err_code === 500) {

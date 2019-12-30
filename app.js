@@ -2,6 +2,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 var hbs = require('express-handlebars')
+const admin = require('./routes/admin')
 const cart = require('./routes/cart')
 // const Cart = require('../models/cart')
 const index = require('./routes/index')
@@ -92,6 +93,7 @@ app.use(function (req, res, next) {
   next();
 })
 //把路由挂载到app中
+app.use(admin)
 app.use(Search)
 app.use(my_order)
 app.use(checkout)

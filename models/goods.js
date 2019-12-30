@@ -39,9 +39,23 @@ var goodsSchema = new Goods_schema({
         type: String,
         require: true
     },
-    price: {
+    gender_trend:{
+        // 性别趋向
+        type:String,
+        enum:['boys', 'girls', 'all'],
+        require:true
+    },
+    old_price: {
         type: Number,
-        require: true
+        require: false
+    },
+    price:{
+        type:Number,
+        require:true
+    },
+    discount:{
+        type:String,
+        require:false
     },
     create_time: {
         type: Date,
