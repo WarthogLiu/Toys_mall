@@ -1,14 +1,18 @@
 var mongoose = require('mongoose')
 mongoose.connect('mongodb+srv://admin:8638938lzY@mymongodb-rdfvx.azure.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
 
-var History_schema = mongoose.Schema;
+var Contact_schema = mongoose.Schema;
 
-var history_schema = new History_schema({
-    name: {
+var contact_schema = new Contact_schema({
+    email: {
         type: String,
         require: true
     },
-    id: {
+    phone: {
+        type: String,
+        require: true
+    },
+    address: {
         type: String,
         require: true
     },
@@ -16,10 +20,10 @@ var history_schema = new History_schema({
         type: String,
         require: true
     },
-    create_time: {
-        type: String,
-        require: true
-    }
+    create_time:{
+        type:String,
+        require:true
+    },
 });
 
-module.exports = mongoose.model('History', history_schema)
+module.exports = mongoose.model('Contact', contact_schema)
