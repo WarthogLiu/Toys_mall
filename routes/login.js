@@ -7,6 +7,10 @@ const login = express.Router()
 login.get('/login', function (req, res) {
     //渲染主页面
     // console.log(req.session.user)
+    
+    // 但凡进入 login 页面，则默认清除用户登陆状态
+    req.session.user = null
+    
     res.render('login.html', {
         user: req.session.user
     })
