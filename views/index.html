@@ -164,12 +164,12 @@
 		<div class="container">
 			<div class="newsletter">
 				<h3 class="title">Newsletter</h3>
-				<p>We will keep you informed of new products and promotions</p>
+				<p>We will keep ycomou informed of new products and promotions</p>
 				<br>
 				<p>留下您的联络邮箱，我们将第一时间通知您新产品和促销活动</p>
-				<form>
-					<input type="text" class="form-item" placeholder="Enter your email">
-					<button type="button"><i class="fa fa-paper-plane-o"></i></button>
+				<form id="sub_form" action="/sub" method="post">
+					<input type="text" class="form-item" placeholder="Enter your email" name="sub">
+					<button type="submit"><i class="fa fa-paper-plane-o"></i></button>
 				</form>
 			</div>
 		</div>
@@ -224,6 +224,36 @@
 	<script src="js/magnific-popup/jquery.magnific-popup.min.js"></script>
 	<!-- Script -->
 	<script src="js/script.js"></script>
+
+		<!-- 表单数据序列化，ajax 异步提交 -->
+	<!-- <script src="/node_modules/jquery/dist/jquery.js"></script> -->
+	<script>
+		$('#sub_form').on('submit', function (e) {
+			e.preventDefault()
+			var formData = $(this).serialize()
+			console.log(formData)
+			$.ajax({
+				url: '/sub',
+				type: 'post',
+				data: formData,
+				dataType: 'json',
+				success: function (data) {
+					// console.log(data)
+					var err_code = data.err_code
+					var nickname = data.nickname
+					if (err_code === 0) {
+						// 成功
+						window.alert('Thank you for your subscription')
+					} else if (err_code === 1) {
+						// 重复
+						window.alert('Email already exists')
+					} else if (err_code === 500) {
+						window.alert('Server bussy...')
+					}
+				}
+			})
+		})
+	</script>
 </body>
 
 </html>

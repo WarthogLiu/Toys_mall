@@ -26,11 +26,16 @@ node_modules:npm插件
 ## NOTE
 Express获取get请求参数  
 req.query  
+
 服务器获取post请求参数(body-parser中间件)  
 req.body  
+
 用户登陆状态保存  
 session.user  
+
 购物车内容保存  
 session.cart  
 
-
+获取字符类型  
+typeof  
+console.log(typeof(req.body))  

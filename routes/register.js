@@ -69,7 +69,7 @@ register.post('/register', function (req, res) {
             // console.log(typeof(body.group));
             // console.log(body.group);
             // 用户注册跳转
-            
+
         })
 
         if (body.group == 0) {
@@ -80,13 +80,13 @@ register.post('/register', function (req, res) {
             })
         }
         // 管理员注册跳转
-        if (body.group == 1){
-        res.status(200).json({
-            err_code: 2,
-            nickname: body.nickname,
-            message: 'OK Admin'
-        })
-    }
+        if (body.group == 1) {
+            res.status(200).json({
+                err_code: 2,
+                nickname: body.nickname,
+                message: 'OK Admin'
+            })
+        }
         // 同步请求跳转用
         // res.redirect('/')
 

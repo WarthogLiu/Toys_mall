@@ -49,7 +49,7 @@
 				<h3 class="title">Contact us</h3>
 				<div class="row">
 					<div class="col-sm-7 col-md-7 col-lg-8">
-						<form class="contact-form">
+						<form id="contact_form">
 							<div class="form-group">
 								<input type="email" class="form-control form-item" placeholder="Email" name="email">
 							</div>
@@ -89,6 +89,34 @@
 		<script src="js/magnific-popup/jquery.magnific-popup.min.js"></script>
 		<!-- Script -->
 		<script src="js/script.js"></script>
+
+			<!-- 表单数据序列化，ajax 异步提交 -->
+	<!-- <script src="/node_modules/jquery/dist/jquery.js"></script> -->
+	<script>
+		$('#contact_form').on('submit', function (e) {
+			e.preventDefault()
+			var formData = $(this).serialize()
+			console.log(formData)
+			$.ajax({
+				url: '/contact',
+				type: 'post',
+				data: formData,
+				dataType: 'json',
+				success: function (data) {
+					// console.log(data)
+					var err_code = data.err_code
+					if (err_code === 0) {
+						// 成功
+						window.alert('We have received and will reply you as soon as possible!\n我们已收到，将尽快给您答复!')
+						// 执行跳转至主页
+						window.location.href = '/index'
+					} else if (err_code === 500) {
+						window.alert('Server bussy...')
+					}
+				}
+			})
+		})
+	</script>
 	</body>
 </html>
 

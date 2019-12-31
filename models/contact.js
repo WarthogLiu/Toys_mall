@@ -21,8 +21,8 @@ var contact_schema = new Contact_schema({
         require: true
     },
     create_time:{
-        type:String,
-        require:true
+        type:Date,
+        default: Date.now
     },
 });
 
