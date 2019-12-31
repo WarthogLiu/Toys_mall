@@ -22,7 +22,7 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')(session) //将 session 存入数据库 
 
 //测试模块
-const add_goods = require('./routes/add_goods')
+const new_arrival = require('./routes/new_arrival')
 // const goods = require('./routes/goods')
 
 const path = require('path')
@@ -109,7 +109,7 @@ app.use(index)
 
 //测试路由
 // app.use(shopping_cart)
-app.use(add_goods)
+app.use(new_arrival)
 // app.use(goods)
 
 // 直接路由

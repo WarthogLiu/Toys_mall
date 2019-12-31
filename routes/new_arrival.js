@@ -1,15 +1,15 @@
 const express = require('express')
 const Goods = require('../models/goods')
 
-const add_goods = express.Router()
+const new_arrival = express.Router()
 
-add_goods.get('/add_goods', function (req, res) {
+new_arrival.get('/new_arrival', function (req, res) {
     //渲染主页面
     // console.log(req.session.user)
-    res.render('add_goods.html')
+    res.render('new_arrival.html')
 })
 
-add_goods.post('/add_goods', function (req, res) {
+new_arrival.post('/new_arrival', function (req, res) {
     //1.获取表单数据
     //2.查询是否存在
     //3.发送响应数据
@@ -65,4 +65,4 @@ add_goods.post('/add_goods', function (req, res) {
 
 })
 
-module.exports = add_goods
+module.exports = new_arrival
