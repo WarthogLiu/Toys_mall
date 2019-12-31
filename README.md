@@ -1,7 +1,8 @@
 基础格式参考：https://help.github.com/cn/github/writing-on-github/getting-started-with-writing-and-formatting-on-github  
 高级格式：https://help.github.com/cn/github/writing-on-github/working-with-advanced-formatting  
 # Graduation_Project
-Graduation project of DJTU 2020
+Graduation project of DJTU 2020  
+本项目为大连交通大学2020届毕业设计  
   
 ## 本地文件结构
 views:代渲染视图文件  
