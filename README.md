@@ -1,4 +1,4 @@
-READEME格式参考：https://help.github.com/cn/github/writing-on-github/getting-started-with-writing-and-formatting-on-github  
+基础格式参考：https://help.github.com/cn/github/writing-on-github/getting-started-with-writing-and-formatting-on-github  
 高级格式：https://help.github.com/cn/github/writing-on-github/working-with-advanced-formatting  
 # Graduation_Project
 Graduation project of DJTU 2020
