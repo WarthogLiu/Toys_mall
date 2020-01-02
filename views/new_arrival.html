@@ -1,76 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="zxx">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add Goods</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Arrival</title>
+
+    <!-- BOOTSTRAP STYLES-->
+    <link href="../public/admin_assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link href="../public/admin_assets/css/font-awesome.css" rel="stylesheet" />
+    <!--CUSTOM BASIC STYLES-->
+    <link href="../public/admin_assets/css/basic.css" rel="stylesheet" />
+    <!--CUSTOM MAIN STYLES-->
+    <link href="../public/admin_assets/css/custom.css" rel="stylesheet" />
 </head>
 
 <body>
-    <form id="addgoods_form" action="/add_goods">
-        GoodsName:<br>
-        <input type='text' name='goodsName' value="">
-        <br>
-        Brand:<br>
-        <input type='text' name='brand' value="">
-        <br>
-        Age:<br>
-        <input type='text' name='age' value="all">
-        <br>
-        Color:<br>
-        <input type='text' name='color' value="">
-        <br>
-        Made in:<br>
-        <input type='text' name='madein' value="">
-        <br>
-        Availability:<br>
-        <input type='text' name='availability' value="">
-        <br>
-        ImagePath:<br>
-        <input type='text' name='imgPath' value="">
-        <br>
-        Description:<br>
-        <input type='text' name='description' value="">
-        <br>
-        Price:<br>
-        <input type='text' name='price' value="">
-        <br>
-        <button type='submit' >Add</button>
-    </form>
+    <div id="wrapper">
 
 
-    <!-- 表单数据序列化，ajax 异步提交 -->
-    <!-- <script src="/node_modules/jquery/jdist/jquery.js"></script> -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script>
-        $('#addgoods_form').on('submit', function (e) {
-            e.preventDefault()
-            var formData = $(this).serialize()
-            // console.log(formData)
-            $.ajax({
-                url: '/add_goods',
-                type: 'post',
-                data: formData,
-                dataType: 'json',
-                success: function (data) {
-                    console.log(data)
-                    var err_code = data.err_code
-                    if (err_code === 0) {
-                        // 提交成功
-                        window.alert('Add success')
-                        // 执行跳转回页面
-                        window.location.href = '/add_goods'
-                    } else if (err_code === 1) {
-                        window.alert('Goods already exists')
-                    } else if (err_code === 500) {
-                        window.alert('Server bussy...')
-                    }
-                }
-            })
-        })
-    </script>
+        <!-- ad_hdr_nav 头部及导航栏 -->
+        {{ include'./adm_hdr_nav.html' }}
+        <!-- /ad_hdr_nav 头部及导航栏 -->
+
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-head-line">New Arrival</h1>
+                        <h1 class="page-subhead-line">请在此页上架货物</h1>
+                    </div>
+                </div>
+
+                <!-- /. ROW  -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                GOODS DETAIL
+                            </div>
+                            <div class="panel-body">
+                                <form action="new_arrival" method="post" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label>Goods Name</label>
+                                        <input class="form-control" type="text" name="name" placeholder="Goods Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Goods Brand</label>
+                                        <input class="form-control" type="text" name="brand" placeholder="Goods Brand">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Suitable Age</label>
+                                        <input class="form-control" type="text" name="age" placeholder="Suitable Age e.g. 3+">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Color</label>
+                                        <input class="form-control" type="text" name="color" placeholder="Goods Color">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Made In</label>
+                                        <input class="form-control" type="text" name="madein" placeholder="Made In">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Availability</label>
+                                        <input class="form-control" type="text" name="availability" placeholder="Principle: >= 0" value="0">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Gender Trend</label>
+                                        <input class="form-control" type="text" name="gender_trend" placeholder="Boys? Girls? All?">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Original_price</label>
+                                        <input class="form-control" type="text" name="original_price" placeholder="Original Price">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Current Price</label>
+                                        <input class="form-control" type="text" name="current_price" placeholder="Current Price">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Discount</label>
+                                        <input class="form-control" type="text" name="discount" placeholder="Discount 80% off?">
+                                    </div>
+
+                                    <!-- 图片上传 -->
+                                    <div class="form-group">
+                                        <label>Image</label>
+                                        <input type="file" name="image">
+                                    </div>
+                                    <div class="alert alert-warning"><strong>Notice!</strong> Image preview only works
+                                        in IE10+, FF3.6+, Chrome6.0+ and Opera11.1+. In older browsers and Safari, the
+                                        filename is shown instead.</div>
+                                    <!-- /图片上传 -->
+
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <textarea class="form-control" rows="3" name="description" placeholder="Description of Goods"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-info">Add Goods</button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+
+
+
+
+    <div id="footer-sec">
+        Copyright &copy; 2019.毕设项目.<a target="_blank" href="http://www.google.com">逛逛谷歌？</a>
+    </div>
+    <!-- /. FOOTER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="../public/admin_assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="../public/admin_assets/js/bootstrap.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="../public/admin_assets/js/jquery.metisMenu.js"></script>
+    <!-- CUSTOM SCRIPTS -->
+    <script src="../public/admin_assets/js/custom.js"></script>
+
+    <!-- 动态时间 -->
+    <script>setInterval("linkweb.innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());", 1000);</script>
+
+
+
+
 </body>
 
 </html>

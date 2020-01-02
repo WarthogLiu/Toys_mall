@@ -9,7 +9,10 @@ const md5 = require('blueimp-md5')
 const register = express.Router()
 
 register.get('/register', function (req, res) {
-    //渲染注册页面
+    // 但凡进入 login 页面，则默认清除用户登陆状态
+    req.session.user = null
+
+    // 渲染注册页面
     res.render('register.html', {
         user: req.session.user
     })
@@ -22,7 +25,7 @@ register.post('/register', function (req, res) {
     // console.log(req.body)
     // 
     var body = req.body
-    console.log(body.group)
+    // console.log(body.group)
     //
     User.findOne({
         //或 查询
@@ -62,7 +65,7 @@ register.post('/register', function (req, res) {
             }
 
             // 注册成功并使用session保存状态
-            req.session.user = user;
+            req.session.user = user
 
             // console.log(typeof(user.group));
             // console.log(user.group);
@@ -70,25 +73,26 @@ register.post('/register', function (req, res) {
             // console.log(body.group);
             // 用户注册跳转
 
+            if (body.group == 0) {
+                return res.status(200).json({
+                    err_code: 0,
+                    nickname: body.nickname,
+                    message: 'OK Customer'
+                })
+            }
+            // 管理员注册跳转
+            if (body.group == 1) {
+                res.status(200).json({
+                    err_code: 2,
+                    nickname: body.nickname,
+                    message: 'OK Admin'
+                })
+            }
+            // 同步请求跳转用
+            // res.redirect('/')
         })
 
-        if (body.group == 0) {
-            return res.status(200).json({
-                err_code: 0,
-                nickname: body.nickname,
-                message: 'OK Customer'
-            })
-        }
-        // 管理员注册跳转
-        if (body.group == 1) {
-            res.status(200).json({
-                err_code: 2,
-                nickname: body.nickname,
-                message: 'OK Admin'
-            })
-        }
-        // 同步请求跳转用
-        // res.redirect('/')
+
 
     })
 

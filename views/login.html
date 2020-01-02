@@ -109,12 +109,12 @@
 					var nickname = data.nickname
 					if (err_code === 0) {
 						// 普通用户登陆成功
-						window.alert('Wellcome   ' + nickname)
+						window.alert('Wellcome VIP: ' + nickname)
 						// 执行跳转至主页
 						window.location.href = '/index'
 					} else if (err_code === 2) {
 						// 管理员登陆成功
-						window.alert('Wellcome   ' + nickname)
+						window.alert('Wellcome Administrator: ' + nickname)
 						// 执行跳转至后台管理页面
 						window.location.href = '/admin'
 					} else if (err_code === 1) {

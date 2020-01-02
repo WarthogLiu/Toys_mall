@@ -39,3 +39,7 @@ session.cart
 获取字符类型  
 typeof  
 console.log(typeof(req.body))  
+
+字符类型转换  
+String -> Number  
+parseFloat()  

@@ -2,6 +2,9 @@
 const express = require('express')
 const mongoose = require('mongoose')
 var hbs = require('express-handlebars')
+
+const add_goods = require('./routes/add_goods')
+const new_arrival = require('./routes/new_arrival')
 const admin = require('./routes/admin')
 const sub_cont = require('./routes/sub_cont')
 const cart = require('./routes/cart')
@@ -23,7 +26,7 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')(session) //将 session 存入数据库 
 
 //测试模块
-const new_arrival = require('./routes/new_arrival')
+
 // const goods = require('./routes/goods')
 
 const path = require('path')
@@ -31,6 +34,7 @@ const path = require('path')
 const app = express()
 
 app.use(express.static('public'));
+app.use('/upload',express.static('upload'));// 图片上传文件夹
 app.use(express.static('models'));
 app.use('/public', express.static(path.join(__dirname, './public/')))
 app.use('/node_modules/', express.static(path.join(__dirname, './node_modules/')))
@@ -94,6 +98,7 @@ app.use(function (req, res, next) {
   next();
 })
 //把路由挂载到app中
+app.use(add_goods)
 app.use(admin)
 app.use(sub_cont)
 app.use(Search)

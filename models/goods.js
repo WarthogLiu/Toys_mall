@@ -27,6 +27,28 @@ var goodsSchema = new Goods_schema({
         require: true
     },
     availability: {
+        type: Number,
+        require: true
+    },
+    gender_trend:{
+        // 性别趋向
+        type:String,
+        enum:['Boys', 'Girls', 'All'],
+        require:true
+    },
+    original_price: {
+        type: Number,
+        require: false
+    },
+    current_price:{
+        type:Number,
+        require:true
+    },
+    discount:{
+        type:String,
+        require:false
+    },
+    description: {
         type: String,
         require: true
     },
@@ -34,28 +56,6 @@ var goodsSchema = new Goods_schema({
         type: String,
         require: true,
         default: '../public/goodsimg/default.img'
-    },
-    description: {
-        type: String,
-        require: true
-    },
-    gender_trend:{
-        // 性别趋向
-        type:String,
-        enum:['boys', 'girls', 'all'],
-        require:true
-    },
-    old_price: {
-        type: Number,
-        require: false
-    },
-    price:{
-        type:Number,
-        require:true
-    },
-    discount:{
-        type:String,
-        require:false
     },
     create_time: {
         type: Date,

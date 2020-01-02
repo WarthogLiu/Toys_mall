@@ -5,12 +5,13 @@ const md5 = require('blueimp-md5')
 const login = express.Router()
 
 login.get('/login', function (req, res) {
-    //渲染主页面
+
     // console.log(req.session.user)
-    
+
     // 但凡进入 login 页面，则默认清除用户登陆状态
     req.session.user = null
-    
+
+    //渲染主页面
     res.render('login.html', {
         user: req.session.user
     })
@@ -24,7 +25,7 @@ login.post('/login', function (req, res) {
     //
     var body = req.body
     console.log(req.body)
-    
+
     User.findOne({
         //与 查询
         email: body.email,

@@ -20,8 +20,12 @@ var contact_schema = new Contact_schema({
         type: String,
         require: true
     },
-    create_time:{
-        type:Date,
+    status: {
+        type: String,
+        default: true
+    },
+    create_time: {
+        type: Date,
         default: Date.now
     },
 });

@@ -17,8 +17,6 @@
 		<link rel="stylesheet" type="text/css" href="css/owl-coursel/owl.transitions.css">
 		<!-- Magnific-popup -->
 		<link rel="stylesheet" type="text/css" href="css/magnific-popup/magnific-popup.css">
-		<!-- Magnific-popup -->
-		<link rel="stylesheet" type="text/css" href="css/magnific-popup/magnific-popup.css">
 		<!-- Style -->
 		<link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
 		<!-- Fw -->
@@ -90,14 +88,18 @@
 							<div class="product-pare m-t-xs-60">
 								<h1><%- goods.goodsName %></h1>
 								<ul class="list-unstyled">
-									<li><span>Brand:</span><a href="#"><%- goods.brand %></a></li>
-									<li><span>Age:</span><a href="#"><%- goods.age %></a></li>
 									<li><span>Product Code:</span> <%- goods._id %></li>
-									<li><span>Color:</span> <%- goods.color %></li>
+									<li><span>Brand:</span><a href="#"><%- goods.brand %></a></li>
 									<li><span>Made in:</span> <%- goods.madein %></li>
+									<li><span>Age:</span><a href="#"><%- goods.age %></a></li>
+									<li><span>Color:</span> <%- goods.color %></li>
+									<li><span>Gender Trend:</span> <%- goods.gender_trend %></li>
 									<li><span>Availability:</span> <%- goods.availability %></li>
 								</ul>
-								<p class="product-price">￥<%- goods.price %></p>
+								<% if (goods.original_price) {%>
+									<span style="text-decoration:line-through;font-size: 30px;color: rgba(255, 188, 101, 0.808);">Original Price: ￥<%- goods.original_price%></span>
+									<% } %>
+								<p class="product-price">Current Price: ￥<%- goods.current_price %></p>
 								<!-- <div class="quantily-wrap">
 									<label class="control-label" for="input-quantity">Qty</label>
 									<input type="number" value="1" size="2" id="input-quantity" class="form-control form-item">

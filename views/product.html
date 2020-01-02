@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
 <html lang="zxx">
-
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -102,8 +101,10 @@
 						<div class="product-caption">
 							<h4 class="product-name"><a href="product_detail?id=<%- lists[i]._id %>"><%- lists[i].goodsName %></a></h4>
 							<div class="product-price-group">
-								<!-- <span class="product-price-old">￥12,00</span> -->
-								<span class="product-price">￥<%- lists[i].price%></span>
+								<% if (lists[i].original_price) {%>
+								<span class="product-price-old">￥<%- lists[i].original_price%></span>
+								<% } %>
+								<span class="product-price">￥<%- lists[i].current_price%></span>
 							</div>
 						</div>
 						<div class="absolute-caption">
