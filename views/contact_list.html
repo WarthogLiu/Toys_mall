@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns="zxx">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Lists</title>
+
+    <!-- BOOTSTRAP STYLES-->
+    <link href="../public/admin_assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link href="../public/admin_assets/css/font-awesome.css" rel="stylesheet" />
+    <!--CUSTOM BASIC STYLES-->
+    <link href="../public/admin_assets/css/basic.css" rel="stylesheet" />
+    <!--CUSTOM MAIN STYLES-->
+    <link href="../public/admin_assets/css/custom.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- ad_hdr_nav 头部及导航栏 -->
+        {{ include'./adm_hdr_nav.html' }}
+        <!-- /ad_hdr_nav 头部及导航栏 -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-head-line">Contact Lists</h1>
+                        <h1 class="page-subhead-line">请在此页查看和处理反馈</h1>
+                    </div>
+                </div>
+                <!-- Search -->
+                <form class="search_form" action="/modify_search" method="get">
+                    <div class="panel-footer">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search Goods" name="search" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-success" type="submit">SEARCH</button>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+                <!-- /Search -->
+
+                <hr />
+
+                <div class="row">
+                    <div class="col-xs-12">
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>ID</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Status</th>
+                                        <th>Create Time</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for (var i = 0; i < lists.length; i++) { %>
+                                    <tr>
+                                        <td><%- i %></td>
+                                        <td><a href="/contact_detail?id=<%- lists[i]._id %>"><%- lists[i]._id %></a>
+                                        </td>
+                                        <td><%- lists[i].email %></td>
+                                        <td><%- lists[i].phone %></td>
+                                        <td><%- lists[i].status %></td>
+                                        <td><%- lists[i].create_time %></td>
+                                        <% if ( lists[i].status == "Unprocessed" ) { %>
+                                        <form id="contact_form" action="/contact_processed" method="POST">
+                                            <input type="hidden" name="id" value="<%- lists[i]._id %>"></input>
+                                            <td><button type="submit" class="btn btn-success">Processed</button></td>
+                                        </form>
+                                        <% } else { %>
+                                        <form id="contact_form" action="/contact_unprocessed" method="POST">
+                                            <input type="hidden" name="id" value="<%- lists[i]._id %>"></input>
+                                            <td><button type="submit" class="btn btn-danger">Unprocessed</button></td>
+                                        </form>
+                                        <% } %>
+                                    </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="footer-sec">
+        Copyright &copy; 2019.毕设项目.<a target="_blank" href="http://www.google.com">逛逛谷歌？</a>
+    </div>
+    <!-- /. FOOTER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="../public/admin_assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="../public/admin_assets/js/bootstrap.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="../public/admin_assets/js/jquery.metisMenu.js"></script>
+    <!-- CUSTOM SCRIPTS -->
+    <script src="../public/admin_assets/js/custom.js"></script>
+
+    <!-- 动态时间 -->
+    <script>setInterval("linkweb.innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());", 1000);</script>
+
+
+
+
+</body>
+
+</html>
