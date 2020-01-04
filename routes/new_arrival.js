@@ -88,10 +88,10 @@ new_arrival.post('/new_arrival', function (req, res) {
                 // 注册成功并使用session保存状态
                 // req.session.user = user
                 res.redirect('/new_arrival')
-                res.status(200).json({
-                    err_code: 0,
-                    message: 'OK'
-                })
+                // res.status(200).json({
+                //     err_code: 0,
+                //     message: 'OK'
+                // })
             });
 
         });

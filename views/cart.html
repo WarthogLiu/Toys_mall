@@ -46,7 +46,7 @@
     <section class="m-t-0">
         <div class="container">
             <div class="thumb p-30">
-
+                {{ products }}
                 {{ if products }}
                 <div class="row">
                     <h3 class="title">Cart 购物车</h3>
@@ -56,7 +56,7 @@
                             <li class="list-group-item">
                                 <span class="badge"> {{ products[$index].qty }} </span>
                                 <strong> {{ products[$index].item.goodsName }} </strong>
-                                <span class="label label-success">￥{{ products[$index].item.price }}</span>
+                                <span class="label label-success">￥{{ products[$index].item.current_price }}</span>
                                 <div class="btn-group">
                                     <button class="btn btn-primary btn-xs dropdown-toggle" type="button"
                                         data-toggle="dropdown">Action
@@ -86,8 +86,7 @@
                 <br>
                 <div class="row">
                     <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-                        <a href="/remove_all" type="button" class="btn btn-success"
-                            style="color:rgb(253, 43, 130)">Remove All</a href="remove_all">
+                        <a href="/remove_all" type="button" class="btn btn-danger">Remove All</a href="remove_all">
                     </div>
                 </div>
 

@@ -3,6 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 var hbs = require('express-handlebars')
 
+const Del_goods = require('./routes/delete_goods')
 const modify = require('./routes/modify')
 const add_goods = require('./routes/add_goods')
 const new_arrival = require('./routes/new_arrival')
@@ -99,6 +100,7 @@ app.use(function (req, res, next) {
   next();
 })
 //把路由挂载到app中
+app.use(Del_goods)
 app.use(modify)
 app.use(add_goods)
 app.use(admin)
