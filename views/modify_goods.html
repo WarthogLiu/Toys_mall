@@ -28,8 +28,8 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="page-head-line">New Arrival</h1>
-                        <h1 class="page-subhead-line">请在此页上架货物</h1>
+                        <h1 class="page-head-line">Modify Detail</h1>
+                        <h1 class="page-subhead-line">请在此页进行详细编辑</h1>
                     </div>
                 </div>
 
@@ -41,52 +41,53 @@
                                 GOODS DETAIL
                             </div>
                             <div class="panel-body">
-                                <form action="new_arrival" method="post" enctype="multipart/form-data">
+                                <form action="modify_goods" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="id" value="<%- goods._id%>">
                                     <div class="form-group">
                                         <label>Goods Name</label>
-                                        <input class="form-control" type="text" name="name" placeholder="Goods Name">
+                                        <input class="form-control" type="text" name="name" value="<%- goods.goodsName%>">
                                     </div>
                                     <div class="form-group">
                                         <label>Goods Brand</label>
-                                        <input class="form-control" type="text" name="brand" placeholder="Goods Brand">
+                                        <input class="form-control" type="text" name="brand" value="<%- goods.brand%>">
                                     </div>
                                     <div class="form-group">
                                         <label>Suitable Age</label>
-                                        <input class="form-control" type="text" name="age" placeholder="Suitable Age e.g. 3+">
+                                        <input class="form-control" type="text" name="age" value="<%- goods.age%>">
                                     </div>
                                     <div class="form-group">
                                         <label>Color</label>
-                                        <input class="form-control" type="text" name="color" placeholder="Goods Color">
+                                        <input class="form-control" type="text" name="color" value="<%- goods.color%>">
                                     </div>
                                     <div class="form-group">
                                         <label>Made In</label>
-                                        <input class="form-control" type="text" name="madein" placeholder="Made In">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Availability</label>
-                                        <input class="form-control" type="text" name="availability" placeholder="Principle: >= 0" value="0">
+                                        <input class="form-control" type="text" name="madein" value="<%- goods.madein%>">
                                     </div>
                                     <div class="form-group">
                                         <label>Gender Trend</label>
-                                        <input class="form-control" type="text" name="gender_trend" placeholder="Boys? Girls? All?">
+                                        <input class="form-control" type="text" name="gender_trend" value="<%- goods.gender_trend%>">
                                     </div>
                                     <div class="form-group">
                                         <label>Original Price</label>
-                                        <input class="form-control" type="text" name="original_price" placeholder="Original Price">
+                                        <input class="form-control" type="text" name="original_price" value="<%- goods.original_price%>">
                                     </div>
                                     <div class="form-group">
                                         <label>Current Price</label>
-                                        <input class="form-control" type="text" name="current_price" placeholder="Current Price">
+                                        <input class="form-control" type="text" name="current_price" value="<%- goods.current_price%>">
                                     </div>
                                     <div class="form-group">
                                         <label>Discount</label>
-                                        <input class="form-control" type="text" name="discount" placeholder="Discount 80% off?">
+                                        <input class="form-control" type="text" name="discount" value="<%- goods.discount%>">
                                     </div>
 
                                     <!-- 图片上传 -->
                                     <div class="form-group">
                                         <label>Image</label>
-                                        <input type="file" name="image">
+                                        <br>
+                                        <input type="file" name="image" >
+                                        <br>
+                                        <img src="<%- goods.imgPath %>" style="width: 200px;">
+                                        <br>
                                     </div>
                                     <div class="alert alert-warning"><strong>Notice!</strong> Image preview only works
                                         in IE10+, FF3.6+, Chrome6.0+ and Opera11.1+. In older browsers and Safari, the
@@ -95,9 +96,9 @@
 
                                     <div class="form-group">
                                         <label>Description</label>
-                                        <textarea class="form-control" rows="3" name="description" placeholder="Description of Goods"></textarea>
+                                        <textarea class="form-control" rows="3" name="description" ><%- goods.description%></textarea>
                                     </div>
-                                    <button type="submit" class="btn btn-info">Add Goods</button>
+                                    <button type="submit" class="btn btn-info">Update</button>
 
                                 </form>
                             </div>

@@ -77,7 +77,7 @@
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane active" id="tab-description">
 						<div class="row product-1">
-							<% for (var i = 0; i < lists.length; i++) { %>
+							<% for (var i = 0; i < 12 ; i++) { %>
 							<div class="col-sm-6 col-md-3">
 								<!-- Product item -->
 								<div class="product-item hover-img">
@@ -90,7 +90,7 @@
 											<a href="product_detail?id=<%- lists[i]._id%>"><%- lists[i].goodsName %></a>
 										</h4>
 										<div class="product-price-group">
-											<span class="product-price">￥<%- lists[i].price%></span>
+											<span class="product-price">￥<%- lists[i].current_price%></span>
 										</div>
 									</div>
 									<div class="absolute-caption">
@@ -135,7 +135,7 @@
 				<div class="owl" data-items="4" data-itemsDesktop="3" data-itemsDesktopSmall="2" data-itemsTablet="2"
 					data-itemsMobile="1" data-transitionstyle="backslide" data-singleItem="false" data-autoplay="3000"
 					data-pag="false" data-buttons="false">
-					<% for (var i = 0; i < lists.length; i++) { %>
+					<% for (var i = 0; i < 12; i++) { %>
 					<div class="col-lg-12">
 						<!-- Product item -->
 						<div class="product-item hover-img">

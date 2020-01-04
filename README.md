@@ -21,6 +21,8 @@ node_modules:npm插件
 | /logout | GET | | | | | 处理退出请求 |  
 | /new_arrival | GET | | | | 新货上架 |  
 | /new_arrival | POST | | 数据库对象 | | 存放新产品信息 |  
+| /modify | GET | /modify | | | 渲染待修改列表页面 |  
+| /modify | GET | /modify_goods | | | 渲染修改详情页面 |  
 
   
 ## NOTE

@@ -2,6 +2,7 @@ const express = require('express')
 const Goods = require('../models/goods')
 const Order = require('../models/order')
 const User = require('../models/user')
+const mongoose = require('mongoose')
 
 const search = express.Router()
 
@@ -85,7 +86,7 @@ search.get('/add_goods_search', function (req, res) {
                 discount:{ $regex: val, $options: '$i' }
             }
         ]
-    }, function (err, data) {
+    }, function (err, data,next) {
         if (err) {
             return res.status(500).json({
                 success: false,
