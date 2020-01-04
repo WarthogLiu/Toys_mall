@@ -243,10 +243,10 @@
 					var nickname = data.nickname
 					if (err_code === 0) {
 						// 成功
-						window.alert('Thank you for your subscription')
+						window.alert('Thank you for your subscription\n感谢您的关注')
 					} else if (err_code === 1) {
 						// 重复
-						window.alert('Email already exists')
+						window.alert('Email already exists\n您已关注')
 					} else if (err_code === 500) {
 						window.alert('Server bussy...')
 					}

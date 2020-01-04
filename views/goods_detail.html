@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns="zxx">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Goods Detail</title>
+
+    <!-- BOOTSTRAP STYLES-->
+    <link href="../public/admin_assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link href="../public/admin_assets/css/font-awesome.css" rel="stylesheet" />
+    <!--CUSTOM BASIC STYLES-->
+    <link href="../public/admin_assets/css/basic.css" rel="stylesheet" />
+    <!--CUSTOM MAIN STYLES-->
+    <link href="../public/admin_assets/css/custom.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="wrapper">
+
+
+        <!-- ad_hdr_nav 头部及导航栏 -->
+        {{ include'./adm_hdr_nav.html' }}
+        <!-- /ad_hdr_nav 头部及导航栏 -->
+
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-head-line">Goods Detail</h1>
+                        <h1 class="page-subhead-line">此页仅展示商品详细信息</h1>
+                    </div>
+                </div>
+
+                <!-- /. ROW  -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                GOODS DETAIL
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label>Goods ID</label>
+                                    <label><%- goods._id %></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Goods Name</label>
+                                    <label><%- goods.goodsName%></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Goods Brand</label>
+                                    <label><%- goods.brand%></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Suitable Age</label>
+                                    <label><%- goods.age%></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Color</label>
+                                    <label><%- goods.color%><label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Made In</label>
+                                    <label><%- goods.madein%></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Availability</label>
+                                    <label><%- goods.availability %></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Gender Trend</label>
+                                    <label><%- goods.gender_trend%></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Original Price</label>
+                                    <label><%- goods.original_price%></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Current Price</label>
+                                    <label><%- goods.current_price%></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Discount</label>
+                                    <label><%- goods.discount%></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <label><%- goods.description%></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Image</label>
+                                    <label><%- goods.imgPath%></label>
+                                        <img src="<%- goods.imgPath%>" style="width: 100px;">
+                                </div>
+                                <div class="form-group">
+                                    <label>Create Time</label>
+                                    <label><%- goods.create_time%></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+
+
+
+
+    <div id="footer-sec">
+        Copyright &copy; 2019.毕设项目.<a target="_blank" href="http://www.google.com">逛逛谷歌？</a>
+    </div>
+    <!-- /. FOOTER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="../public/admin_assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="../public/admin_assets/js/bootstrap.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="../public/admin_assets/js/jquery.metisMenu.js"></script>
+    <!-- CUSTOM SCRIPTS -->
+    <script src="../public/admin_assets/js/custom.js"></script>
+
+    <!-- 动态时间 -->
+    <script>setInterval("linkweb.innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());", 1000);</script>
+
+
+
+
+</body>
+
+</html>
