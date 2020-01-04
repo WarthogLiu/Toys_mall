@@ -45,3 +45,8 @@ console.log(typeof(req.body))
 字符类型转换  
 String -> Number  
 parseFloat()  
+
+## 已知漏洞  
+# index.html  
+在index页面代码中，商品展示数目写死，当写定数目小于数据库中实际商品数目时，将会报错。  
+原因：无法获取到不存在的商品信息，故出错，无法加载页面，并报错信息中没有体现。  
