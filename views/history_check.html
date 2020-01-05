@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html xmlns="zxx">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>History Detail</title>
+
+    <!-- BOOTSTRAP STYLES-->
+    <link href="../public/admin_assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link href="../public/admin_assets/css/font-awesome.css" rel="stylesheet" />
+    <!--CUSTOM BASIC STYLES-->
+    <link href="../public/admin_assets/css/basic.css" rel="stylesheet" />
+    <!--CUSTOM MAIN STYLES-->
+    <link href="../public/admin_assets/css/custom.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="wrapper">
+
+
+        <!-- ad_hdr_nav 头部及导航栏 -->
+        {{ include'./adm_hdr_nav.html' }}
+        <!-- /ad_hdr_nav 头部及导航栏 -->
+
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-head-line">History Detail</h1>
+                        <h1 class="page-subhead-line">此页仅展示历史记录详细信息</h1>
+                    </div>
+                </div>
+                <% if (lists.type == "Delete User") { %>
+                <!--  Delete User ROW  -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                HISTORY DETAIL
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label>History ID:</label>
+                                    <br>
+                                    <label><%- lists._id %></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>History Type:</label>
+                                    <br>
+                                    <label style="color: rgb(240, 71, 49);"><%- lists.type %></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Delete Before:</label>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="panel panel-info">
+                                                <div class="panel-heading">
+                                                    User Info
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="form-group">
+                                                        <label>User ID:</label>
+                                                        <br>
+                                                        <label><%- lists.before._id %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>User Nickname:</label>
+                                                        <br>
+                                                        <label><%- lists.before.nickname %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>User Email:</label>
+                                                        <br>
+                                                        <label><%- lists.before.email %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Create Time:</label>
+                                                        <br>
+                                                        <label><%- lists.before.create_time %></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Operator:</label>
+                                    <br>
+                                    <label><%- lists.operator %></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>History Create Time:</label>
+                                    <br>
+                                    <label><%- lists.create_time %></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.Delete User ROW  -->
+                <% } else if (lists.type == "Delete Goods") { %>
+                <!--  Delete Goods ROW  -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                HISTORY DETAIL
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label>History ID:</label>
+                                    <br>
+                                    <label><%- lists._id %></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>History Type:</label>
+                                    <br>
+                                    <label style="color: rgb(240, 71, 49);"><%- lists.type %></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Delete Before:</label>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="panel panel-info">
+                                                <div class="panel-heading">
+                                                    Goods Info
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="form-group">
+                                                        <label>Goods ID:</label>
+                                                        <br>
+                                                        <label><%- lists.before._id %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Goods Name:</label>
+                                                        <br>
+                                                        <label><%- lists.before.goodsName %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Brand:</label>
+                                                        <br>
+                                                        <label><%- lists.before.brand %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Age:</label>
+                                                        <br>
+                                                        <label><%- lists.before.age %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Color:</label>
+                                                        <br>
+                                                        <label><%- lists.before.color %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Made In:</label>
+                                                        <br>
+                                                        <label><%- lists.before.madein %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Availability:</label>
+                                                        <br>
+                                                        <label><%- lists.before.availability %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Gender Trend:</label>
+                                                        <br>
+                                                        <label><%- lists.before.gender_trend %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Current Price:</label>
+                                                        <br>
+                                                        <label><%- lists.before.current_price %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Description:</label>
+                                                        <br>
+                                                        <label><%- lists.before.description %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Image:</label>
+                                                        <br>
+                                                        <label>Path: <%- lists.before.imgPath %></label>
+                                                        <br>
+                                                        <img src="<%- lists.before.imgPath %>" style="width: 500px;">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Create Time:</label>
+                                                        <br>
+                                                        <label><%- lists.before.create_time %></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Operator:</label>
+                                    <br>
+                                    <label><%- lists.operator %></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>History Create Time:</label>
+                                    <br>
+                                    <label><%- lists.create_time %></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.Delete Goods ROW  -->
+                <% } else if (lists.type == "Modify Goods") { %>
+                <!--  New Arrival ROW  -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                HISTORY DETAIL
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label>History ID:</label>
+                                    <br>
+                                    <label><%- lists._id %></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>History Type:</label>
+                                    <br>
+                                    <label style="color: rgb(19, 160, 185);"><%- lists.type %></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Delete Before:</label>
+                                    <br>
+
+                                    <!-- 修改前信息 -->
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="panel panel-info">
+                                                <div class="panel-heading">
+                                                    Change Before
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="form-group">
+                                                        <label>Goods ID:</label>
+                                                        <br>
+                                                        <label><%- lists.before._id %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Goods Name:</label>
+                                                        <br>
+                                                        <label><%- lists.before.goodsName %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Brand:</label>
+                                                        <br>
+                                                        <label><%- lists.before.brand %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Age:</label>
+                                                        <br>
+                                                        <label><%- lists.before.age %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Color:</label>
+                                                        <br>
+                                                        <label><%- lists.before.color %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Made In:</label>
+                                                        <br>
+                                                        <label><%- lists.before.madein %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Gender Trend:</label>
+                                                        <br>
+                                                        <label><%- lists.before.gender_trend %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Current Price:</label>
+                                                        <br>
+                                                        <label><%- lists.before.current_price %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Description:</label>
+                                                        <br>
+                                                        <label><%- lists.before.description %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Image:</label>
+                                                        <br>
+                                                        <label>Path: <%- lists.before.imgPath %></label>
+                                                        <br>
+                                                        <img src="<%- lists.before.imgPath %>" style="width: 500px;">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Create Time:</label>
+                                                        <br>
+                                                        <label><%- lists.before.create_time %></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- / 修改前信息 -->
+
+                                    <!-- 修改前后信息 -->
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="panel panel-info">
+                                                <div class="panel-heading">
+                                                    Change After
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="form-group">
+                                                        <label>Goods ID:</label>
+                                                        <br>
+                                                        <label><%- lists.after._id %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Goods Name:</label>
+                                                        <br>
+                                                        <label
+                                                            style="<% if(lists.before.goodsName !== lists.after.goodsName) { %>color: crimson;<% } %>"><%- lists.after.goodsName %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Brand:</label>
+                                                        <br>
+                                                        <label
+                                                            style="<% if(lists.before.brand !== lists.after.brand) { %>color: crimson;<% } %>"><%- lists.after.brand %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Age:</label>
+                                                        <br>
+                                                        <label
+                                                            style="<% if(lists.before.age !== lists.after.age) { %>color: crimson;<% } %>"><%- lists.after.age %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Color:</label>
+                                                        <br>
+                                                        <label
+                                                            style="<% if(lists.before.color !== lists.after.color) { %>color: crimson;<% } %>"><%- lists.after.color %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Made In:</label>
+                                                        <br>
+                                                        <label
+                                                            style="<% if(lists.before.madein !== lists.after.madein) { %>color: crimson;<% } %>"><%- lists.after.madein %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Gender Trend:</label>
+                                                        <br>
+                                                        <label
+                                                            style="<% if(lists.before.gender_trend !== lists.after.gender_trend) { %>color: crimson;<% } %>"><%- lists.after.gender_trend %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Current Price:</label>
+                                                        <br>
+                                                        <label
+                                                            style="<% if(lists.before.current_price !== lists.after.current_price) { %>color: crimson;<% } %>"><%- lists.after.current_price %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Description:</label>
+                                                        <br>
+                                                        <label
+                                                            style="<% if(lists.before.description !== lists.after.description) { %>color: crimson;<% } %>"><%- lists.after.description %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Image:</label>
+                                                        <br>
+                                                        <% if (lists.after.imgPath == undefined) {%>
+                                                        <label>Path:
+                                                            Unchange</label>
+                                                        <br>
+                                                        <img src="<%- lists.before.imgPath %>" style="width: 500px;">
+                                                        <% } else { %>
+                                                        <label style="color: crimson;">Path:
+                                                            <%- lists.after.imgPath %></label>
+                                                        <br>
+                                                        <img src="<%- lists.after.imgPath %>" style="width: 500px;">
+                                                        <% } %>
+
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Create Time:</label>
+                                                        <br>
+                                                        <label><%- lists.after.create_time %></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- / 修改后信息 -->
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Operator:</label>
+                                    <br>
+                                    <label><%- lists.operator %></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>History Create Time:</label>
+                                    <br>
+                                    <label><%- lists.create_time %></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.New Arrival ROW  -->
+                <% } else if (lists.type == "New Arrival") { %>
+                <!--  New Arrival ROW  -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                HISTORY DETAIL
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label>History ID:</label>
+                                    <br>
+                                    <label><%- lists._id %></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>History Type:</label>
+                                    <br>
+                                    <label style="color: rgb(5, 161, 0);"><%- lists.type %></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Delete Before:</label>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="panel panel-info">
+                                                <div class="panel-heading">
+                                                    Goods Info
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="form-group">
+                                                        <label>Goods ID:</label>
+                                                        <br>
+                                                        <label><%- lists.after._id %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Goods Name:</label>
+                                                        <br>
+                                                        <label><%- lists.after.goodsName %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Brand:</label>
+                                                        <br>
+                                                        <label><%- lists.after.brand %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Age:</label>
+                                                        <br>
+                                                        <label><%- lists.after.age %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Color:</label>
+                                                        <br>
+                                                        <label><%- lists.after.color %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Made In:</label>
+                                                        <br>
+                                                        <label><%- lists.after.madein %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Availability:</label>
+                                                        <br>
+                                                        <label><%- lists.after.availability %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Gender Trend:</label>
+                                                        <br>
+                                                        <label><%- lists.after.gender_trend %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Current Price:</label>
+                                                        <br>
+                                                        <label><%- lists.after.current_price %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Description:</label>
+                                                        <br>
+                                                        <label><%- lists.after.description %></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Image:</label>
+                                                        <br>
+                                                        <label>Path: <%- lists.after.imgPath %></label>
+                                                        <br>
+                                                        <img src="<%- lists.after.imgPath %>" style="width: 500px;">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Create Time:</label>
+                                                        <br>
+                                                        <label><%- lists.after.create_time %></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Operator:</label>
+                                    <br>
+                                    <label><%- lists.operator %></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>History Create Time:</label>
+                                    <br>
+                                    <label><%- lists.create_time %></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.New Arrival ROW  -->
+
+                <% } else if (lists.type == "Add Goods") { %>
+                <!--  Add Goods ROW  -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                HISTORY DETAIL
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label>History ID:</label>
+                                    <br>
+                                    <label><%- lists._id %></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Object ID:</label>
+                                    <br>
+                                    <a href="/goods_detail?id=<%- lists.object_id %>"><label><%- lists.object_id %></label></a>
+                                </div>
+                                <div class="form-group">
+                                    <label>History Type:</label>
+                                    <br>
+                                    <label style="color: rgb(145, 160, 12);"><%- lists.type %></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Availability Before:</label>
+                                    <br>
+                                    <label><%- lists.before %></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Availability After:</label>
+                                    <br>
+                                    <label style="color: rgb(164, 167, 14);"><%- lists.after %></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Operator:</label>
+                                    <br>
+                                    <label><%- lists.operator %></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>History Create Time:</label>
+                                    <br>
+                                    <label><%- lists.create_time %></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.Add Goods ROW  -->
+                <% } %>
+
+
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+
+
+
+
+    <div id="footer-sec">
+        Copyright &copy; 2019.毕设项目.<a target="_blank" href="http://www.google.com">逛逛谷歌？</a>
+    </div>
+    <!-- /. FOOTER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="../public/admin_assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="../public/admin_assets/js/bootstrap.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="../public/admin_assets/js/jquery.metisMenu.js"></script>
+    <!-- CUSTOM SCRIPTS -->
+    <script src="../public/admin_assets/js/custom.js"></script>
+
+    <!-- 动态时间 -->
+    <script>setInterval("linkweb.innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());", 1000);</script>
+
+
+
+
+</body>
+
+</html>

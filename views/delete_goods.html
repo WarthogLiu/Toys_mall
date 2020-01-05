@@ -66,7 +66,7 @@
                                     <% for (var i = 0; i < lists.length; i++) { %>
                                     <tr>
                                         <td><%- i %></td>
-                                        <td><%- lists[i].goodsName %></td>
+                                        <td><a href="/goods_detail?id=<%- lists[i]._id %>"><%- lists[i].goodsName %></a></td>
                                         <td><a href="<%- lists[i].imgPath%>" target="blank"><img
                                                     src="<%- lists[i].imgPath%>" style="height: 35px;"></a></td>
                                         <td><%- lists[i].brand %></td>

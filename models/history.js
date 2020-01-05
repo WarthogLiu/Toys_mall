@@ -4,21 +4,29 @@ mongoose.connect('mongodb+srv://admin:8638938lzY@mymongodb-rdfvx.azure.mongodb.n
 var History_schema = mongoose.Schema;
 
 var history_schema = new History_schema({
-    name: {
+    type: {
         type: String,
         require: true
     },
-    id: {
+    object_id: {
         type: String,
         require: true
     },
-    content: {
+    before: {
+        type: Object,
+        require: false
+    },
+    after: {
+        type: Object,
+        require: false
+    },
+    operator: {
         type: String,
         require: true
     },
     create_time: {
-        type: String,
-        require: true
+        type: Date,
+        default: Date.now
     }
 });
 

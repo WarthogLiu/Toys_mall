@@ -43,7 +43,7 @@ typeof
 console.log(typeof(req.body))  
 
 字符类型转换  
-String -> Number  
+String -> Float  
 parseFloat()  
 
 ## 已知漏洞  

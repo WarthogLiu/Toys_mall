@@ -34,7 +34,8 @@ var orderSchema = new Order_schema({
     },
     status:{
         type:String,
-        enum:['paid', 'received', 'cancelled', 'closed']
+        require:true,
+        // enum:['paid', 'received', 'cancelled', 'closed']
     },
     create_time: {
         type: Date,

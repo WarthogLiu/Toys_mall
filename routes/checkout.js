@@ -62,7 +62,8 @@ checkout.post('/checkout', function (req, res) {
             name:body.name,
             email:body.email,
             phone:body.phone,
-            address:body.address
+            address:body.address,
+            status: "Paid"
         });
        order.save(function(err, result){
         });

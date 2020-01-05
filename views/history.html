@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>New Arrival</title>
+    <title>History</title>
 
     <!-- BOOTSTRAP STYLES-->
     <link href="../public/admin_assets/css/bootstrap.css" rel="stylesheet" />
@@ -25,12 +25,12 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="page-head-line">Add Goodes</h1>
-                        <h1 class="page-subhead-line">请在此页管理进货</h1>
+                        <h1 class="page-head-line">History</h1>
+                        <h1 class="page-subhead-line">请在此页查看历史记录</h1>
                     </div>
                 </div>
                 <!-- Search -->
-                <form class="search_form" action="/add_goods_search" method="get">
+                <form class="search_form" action="/modify_search" method="get">
                     <div class="panel-footer">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Search Goods" name="search" />
@@ -44,21 +44,19 @@
 
                 <hr />
 
-
                 <div class="row">
                     <div class="col-xs-12">
+
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Goods Name</th>
-                                        <th>Image</th>
-                                        <th>Brand</th>
-                                        <th>Made In</th>
-                                        <th>Availability</th>
+                                        <th>History id</th>
+                                        <th>History Type</th>
+                                        <th>Object Name</th>
+                                        <th>Operator</th>
                                         <th>Create Time</th>
-                                        <th>Add Goods</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -66,23 +64,35 @@
                                     <% for (var i = 0; i < lists.length; i++) { %>
                                     <tr>
                                         <td><%- i %></td>
-                                        <td><a href="/goods_detail?id=<%- lists[i]._id %>"><%- lists[i].goodsName %></a>
-                                        </td>
-                                        <td><a href="<%- lists[i].imgPath%>" target="blank"><img
-                                                    src="<%- lists[i].imgPath%>" style="height: 35px;"></a></td>
-                                        <td><%- lists[i].brand %></td>
-                                        <td><%- lists[i].madein %></td>
-                                        <td><%- lists[i].availability %></td>
+                                        <td><%- lists[i]._id %></td>
+                                        <% if (lists[i].type == "Modify Goods") { %>
+                                        <td style="color: rgb(14, 165, 170);"><%- lists[i].type %></td>
+                                        <% } else if (lists[i].type == "New Arrival") { %>
+                                        <td style="color: rgb(56, 165, 5);"><%- lists[i].type %></td>
+                                        <% } else if (lists[i].type == "Delete Goods" || lists[i].type == "Delete User") { %>
+                                            <td style="color: rgb(179, 22, 22);"><%- lists[i].type %></td>
+                                            <% } else if (lists[i].type == "Add Goods") { %>
+                                                <td style="color: rgb(158, 144, 18);"><%- lists[i].type %></td>
+                                        <% } %>
+
+                                        <% if (lists[i].type == "Modify Goods" || lists[i].type == "New Arrival" || lists[i].type == "Add Goods") { %>
+                                        <td>Goods Name:<%- lists[i].after.goodsName %></td>
+                                        <% } else if (lists[i].type == "Delete Goods") { %>
+                                        <td>Goods Name:<%- lists[i].before.goodsName %></td>
+                                        <% } else if (lists[i].type == "Delete User") { %>
+                                        <td>User Name:<%- lists[i].before.nickname %></td>
+                                        <% } %>
+
+                                        <td><%- lists[i].operator %></td>
                                         <td><%- lists[i].create_time %></td>
-                                        <form id="add_goods_form" action="/add_goods" method="POST">
-                                            <input type="hidden" name="id" value="<%- lists[i]._id %>"></input>
-                                            <td><input type="number" value=0 name="add_number"></input></td>
-                                            <td><button type="submit" class="btn btn-info">Update</button></td>
-                                        </form>
+                                        <td><a href="/history_check?id=<%- lists[i]._id%>"
+                                                class="btn btn-info">Check</a>
+                                        </td>
                                     </tr>
                                     <% } %>
                                 </tbody>
                             </table>
+
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,8 @@
 const express = require('express')
 const Goods = require('../models/goods')
+const History = require('../models/history')
 const multiparty = require('multiparty')
+
 
 const new_arrival = express.Router()
 
@@ -84,10 +86,25 @@ new_arrival.post('/new_arrival', function (req, res) {
                         message: "请检查 性别趋向 首字母是否为大写！"
                     })
                 }
+                new History({
+                    type:"New Arrival",
+                    object_id:goods._id,
+                    before:null,
+                    after:goods,
+                    operator:req.session.user.nickname
+                }).save(function(err,docs){
+                    if (err) {
+                        return res.status(500).json({
+                            err_code: 500,
+                            message: "历史记录存储错误！" + err
+                        })
+                    }
+                    res.redirect('/new_arrival')
+                })
 
                 // 注册成功并使用session保存状态
                 // req.session.user = user
-                res.redirect('/new_arrival')
+                
                 // res.status(200).json({
                 //     err_code: 0,
                 //     message: 'OK'

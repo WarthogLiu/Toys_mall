@@ -1,5 +1,6 @@
 const express = require('express')
 const Goods = require('../models/goods')
+const History = require('../models/history')
 const multiparty = require('multiparty')
 const fs = require('fs')
 
@@ -92,25 +93,48 @@ modify.post('/modify_goods', function (req, res) {
             }
         }
 
+
         // console.log(goodsName);
         // console.log(id);
 
-
-        Goods.updateOne({ _id: id }, data, function (err, goods) {
+        Goods.findOne({ _id: id }, function (err, docs) {
             if (err) {
                 return res.status(500).json({
                     err_code: 500,
-                    message: "储存步骤出错"
+                    message: "查找出错" + err
                 })
             }
 
-            res.redirect('/modify')
+            Goods.updateOne({ _id: id }, data, function (err, goods) {
+                if (err) {
+                    return res.status(500).json({
+                        err_code: 500,
+                        message: "更新步骤出错" + err
+                    })
+                }
+                new History({
+                    type: "Modify Goods",
+                    object_id: id,
+                    before: docs,
+                    after: data,
+                    operator: req.session.user.nickname
+                }).save(function (err, docs2) {
+                    if (err) {
+                        return res.status(500).json({
+                            err_code: 500,
+                            message: "历史记录存储错误！" + err
+                        })
+                    }
+                    res.redirect('/modify')
+                })
 
-            // res.status(200).json({
-            //     err_code: 0,
-            //     message: 'OK'
-            // })
-        });
+
+                // res.status(200).json({
+                //     err_code: 0,
+                //     message: 'OK'
+                // })
+            });
+        })
 
 
 
