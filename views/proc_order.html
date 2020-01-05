@@ -73,14 +73,16 @@
                                         <td><%- lists[i].name %></td>
                                         <td><%- lists[i].email %></td>
                                         <td><%- lists[i].phone %></td>
-                                        <% if (lists[i].status == "Paid") { %>
+                                        <% if (lists[i].status == "Paid" || lists[i].status == "Successful") { %>
                                         <td style="color: rgb(18, 180, 18);"><%- lists[i].status %></td>
-                                        <% } else if (lists[i].status == "Processing") { %>
+                                        <% } else if (lists[i].status == "Processing" || lists[i].status == "Unprocessing") { %>
                                         <td style="color: rgb(190, 164, 14);"><%- lists[i].status %></td>
                                         <% } else if (lists[i].status == "Received" || lists[i].status == "Solved") { %>
                                         <td style="color: rgb(14, 103, 145);"><%- lists[i].status %></td>
                                         <% } else if (lists[i].status == "Dispute") { %>
                                         <td style="color: rgb(194, 31, 31);"><%- lists[i].status %></td>
+                                        <% } else if (lists[i].status == "Solved") { %>
+                                        <td style="color: rgb(74, 6, 199);"><%- lists[i].status %></td>
                                         <% } else if (lists[i].status == "Closed") { %>
                                         <td style="color: rgb(0, 0, 0);"><%- lists[i].status %></td>
                                         <% } %>

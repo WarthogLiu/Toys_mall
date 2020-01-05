@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Order Detail</title>
+    <link rel="icon" href="favicon.ico">
+    <!-- JqueryUI -->
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <!-- Awesome font icons -->
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" media="screen">
+    <!-- Owlcoursel -->
+    <link rel="stylesheet" type="text/css" href="css/owl-coursel/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="css/owl-coursel/owl.transitions.css">
+    <!-- Magnific-popup -->
+    <link rel="stylesheet" type="text/css" href="css/magnific-popup/magnific-popup.css">
+    <!-- Style -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
+    <!-- Fw -->
+    <link rel="stylesheet" type="text/css" href="css/fw.css" media="screen">
+</head>
+
+<body>
+
+
+
+    <div class="preloader">
+        <i class="fa fa-spinner"></i>
+    </div>
+
+    <!-- Header -->
+    {{include'./header.html'}}
+
+    <!-- Breadcrumd -->
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="index"><i class="fa fa-home m-r-5"></i>Home</a></li>
+            <li>Order Detail</li>
+        </ul>
+    </div>
+
+
+    <!-- My Order -->
+    <section class="m-t-0">
+        <div class="container">
+            <div class="thumb p-30">
+                <div id="content">
+                    <h3 class="title">Order Detail</h3>
+                    <p>If you have any questions, please <a href="/contact" class="color-2">contact us</a> or press the
+                        <lable style="color: red;">dispute</lable> button.</p>
+                    <p>如果您遇到了任何问题，请<a href="/contact" class="color-2">联系我们</a>，或者按下相应订单详情中的<lable style="color: red;">纠纷
+                        </lable>按钮。</p>
+
+
+                    <!-- /. ROW  -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    ORDER DETAIL
+                                </div>
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label>Order ID:</label>
+                                        <br>
+                                        <label><%- order._id %></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>User ID:</label>
+                                        <br>
+                                        <label><%- order.userId%></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Status:</label>
+                                        <br>
+                                        <% if (order.status == "Paid") { %>
+                                        <label style="color: rgb(18, 180, 18);"><%- order.status %></label>
+                                        <% } else if (order.status == "Processing") { %>
+                                        <label style="color: rgb(190, 164, 14);"><%- order.status %></label>
+                                        <% } else if (order.status == "Closed") { %>
+                                        <label style="color: rgb(0, 0, 0);"><%- order.status %></label>
+                                        <% } else if (order.status == "Received") { %>
+                                        <label style="color: rgb(14, 103, 145);"><%- order.status %></label>
+                                        <% } else if (order.status == "Dispute") { %>
+                                        <label style="color: rgb(194, 31, 31);"><%- order.status %></label>
+                                        <% } %>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Total Quantity:</label>
+                                        <br>
+                                        <label><%- order.cart.totalQty%></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Total Price:</label>
+                                        <br>
+                                        <label>￥ <%- order.cart.totalPrice%></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>User Name:</label>
+                                        <br>
+                                        <label><%- order.name%></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>User Email:</label>
+                                        <br>
+                                        <label><%- order.email%></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>User Phone:</label>
+                                        <br>
+                                        <label><%- order.phone%><label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Addredd:</label>
+                                        <br>
+                                        <label><%- order.address%></label>
+                                    </div>
+                                    {{ each order.cart.items }}
+                                    <!-- /. 商品详情  -->
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="panel panel-info">
+                                                <div class="panel-heading">
+                                                    CART DETAIL
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="form-group">
+                                                        <a href="product_detail?id={{ order.cart.items[$index].item._id }}"><label style="color: rgb(180, 118, 3);">Item:</labelstyle="color: orange;">
+                                                        <br>
+                                                        <label style="color: rgb(180, 118, 3);">{{ order.cart.items[$index].item.goodsName }}</label></a>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Goods Image:</label>
+                                                        <br>
+                                                        <label>{{ order.cart.items[$index].item.imgPath }}</label>
+                                                        <br>
+                                                        <img src="{{ order.cart.items[$index].item.imgPath }}" style="width: 200px;">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Goods ID:</label>
+                                                        <br>
+                                                        <label>{{ order.cart.items[$index].item._id }}</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Each Price:</label>
+                                                        <br>
+                                                        <label>￥
+                                                            {{ order.cart.items[$index].item.current_price }}</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Quantity:</label>
+                                                        <br>
+                                                        <label>{{ order.cart.items[$index].qty }}</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Total Price:</label>
+                                                        <br>
+                                                        <label>￥ {{ order.cart.items[$index].price }}<label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /. 商品详情  -->
+                                    {{/each}}
+
+
+                                    <div class="form-group">
+                                        <label>Create Time:</label>
+                                        <br>
+                                        <label><%- order.create_time%></label>
+                                    </div>
+
+                                    <!-- 如"处理中" 则可收货 -->
+                                    <% if (order.status == "Processing") { %>
+                                    <div style="display:inline-block">
+                                        <form id="deal_rder_form" action="/received_order" method="POST">
+                                            <input type="hidden" name="id" value="<%- order._id %>"></input>
+                                            <td><button type="submit" class="btn btn-success">Received</button></td>
+                                        </form>
+                                    </div>
+                                    <!-- 纠纷确认，并且对处理结果满意 -->
+                                    <% } else if(order.status == "Dispute Resolution"){ %>
+                                    <div style="display:inline-block">
+                                        <form id="deal_rder_form" action="/solved_order" method="POST">
+                                            <input type="hidden" name="id" value="<%- order._id %>"></input>
+                                            <td><button type="submit" class="btn btn-success">Solved</button></td>
+                                        </form>
+                                    </div>
+                                    <% } %>
+                                    <div style="display:inline-block">
+                                        <form id="deal_rder_form" action="/dispute_order" method="POST">
+                                            <input type="hidden" name="id" value="<%- order._id %>"></input>
+                                            <td><button type="submit" class="btn btn-danger">Dispute</button></td>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /. ROW  -->
+
+
+                    <!-- <div class="col-sm-5">
+                    <img src="images/nursery-decoration-1963815_960_720.jpg" title="iPhone" alt="iPhone">
+                </div> -->
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Process -->
+    {{ include'./process.html' }}
+
+
+    <!-- Footer -->
+    {{ include'./footer.html' }}
+
+    <!-- jQuery -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- JqueryUI -->
+    <script src="js/jquery/jquery-ui.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- Owl-coursel -->
+    <script src="js/owl-coursel/owl.carousel.js"></script>
+    <!-- Magnific-popup -->
+    <script src="js/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <!-- Script -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>

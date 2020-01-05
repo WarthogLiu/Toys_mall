@@ -46,6 +46,10 @@ console.log(typeof(req.body))
 String -> Float  
 parseFloat()  
 
+去掉获取到的带引号内容的 引号  
+var id = req.query.id
+    id = id.replace("\"","").replace("\"","");  
+
 ## 已知漏洞  
 # index.html  
 在index页面代码中，商品展示数目写死，当写定数目小于数据库中实际商品数目时，将会报错。  

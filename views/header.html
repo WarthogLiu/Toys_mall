@@ -81,8 +81,12 @@
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
 											aria-haspopup="true" aria-expanded="false">Pages</a>
 										<ul class="dropdown-menu">
-											<li><a href="my_order">My Order</a></li>
-											<!-- <li><a href="register">Register</a></li> -->
+											<% if (user) { %>
+												<li><a href="my_order">My Order</a></li>
+											<% } else { %>
+												<li><a href="login">Please Login</a></li>
+											<% } %>
+											
 										</ul>
 									</li>
 									<li><a href="about">About us</a></li>

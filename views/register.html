@@ -43,6 +43,7 @@
 			<li>Register</li>
 		</ul>
 	</div>
+
 	<!-- Register -->
 	<section class="m-t-0">
 		<div class="container">
@@ -134,6 +135,7 @@
 			</div>
 		</div>
 	</section>
+	<!-- /Register -->
 
 
 	<!-- Process -->
@@ -179,7 +181,7 @@
 						window.location.href = '/index'
 					} else if (err_code === 2) {
 						// 管理员登陆成功
-						window.alert('Register Success  '+nickname)
+						window.alert('Register Success  ' + nickname)
 						// 执行跳转至后台管理页面
 						window.location.href = '/admin'
 					} else if (err_code === 1) {

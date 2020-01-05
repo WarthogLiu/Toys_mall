@@ -160,12 +160,18 @@
                                         <td><button type="submit" class="btn btn-info">Unprocessing</button></td>
                                     </form>
                                 </div>
-                                <!-- 如果买家收货，或者问题解决，管理员可进行"订单关闭"操作 -->
+                                <!-- 如果买家收货，或者问题解决，管理员可进行"交易成功"或"订单关闭"操作 -->
                                 <% } else if (lists.status == "Received" || lists.status == "Solved") { %>
+                                <div style="display:inline-block">
+                                    <form id="deal_rder_form" action="/successful_order" method="POST">
+                                        <input type="hidden" name="id" value="<%- lists._id %>"></input>
+                                        <td><button type="submit" class="btn btn-success">Successful</button></td>
+                                    </form>
+                                </div>
                                 <div style="display:inline-block">
                                     <form id="deal_rder_form" action="/closed_order" method="POST">
                                         <input type="hidden" name="id" value="<%- lists._id %>"></input>
-                                        <td><button type="submit" class="btn btn-success">Closed</button></td>
+                                        <td><button type="submit" class="btn btn-info">Closed</button></td>
                                     </form>
                                 </div>
                                 <!-- 如果买家申请订单纠纷，管理员可进行"订单纠纷状态确认"操作 -->
@@ -173,7 +179,7 @@
                                 <div style="display:inline-block">
                                     <form id="deal_rder_form" action="/dispute_resolution_order" method="POST">
                                         <input type="hidden" name="id" value="<%- lists._id %>"></input>
-                                        <td><button type="submit" class="btn btn-danger">Dispute
+                                        <td><button type="submit" class="btn btn-danger">Dispute Resolution
                                                 Resolution<br>开启纠纷处理状态</button></td>
                                     </form>
                                 </div>

@@ -42,71 +42,113 @@
             <li>Order订单</li>
         </ul>
     </div>
-    <!-- Cart -->
+
+
+    <!-- My Order -->
     <section class="m-t-0">
         <div class="container">
             <div class="thumb p-30">
+                <div id="content">
+                    <h3 class="title">My Order</h3>
+                    <p>If you have any questions, please <a href="/contact" class="color-2">contact us</a> or press the
+                        <lable style="color: red;">dispute</lable> button.</p>
+                    <p>如果您遇到了任何问题，请<a href="/contact" class="color-2">联系我们</a>，或者按下相应订单详情中的<lable style="color: red;">纠纷
+                        </lable>按钮。</p>
+                    {{ if order }}
+                    {{ each order }}
+                    <fieldset id="order">
+                        <legend>Your Order: {{ order[$index]._id }}</legend>
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label">Total Price:</label>
+                            <div class="col-sm-10">
+                                <label style="color: rgb(28, 126, 44);">￥
+                                    {{ order[$index].cart.totalPrice}}</label>
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label">Total Quantity:</label>
+                            <div class="col-sm-10">
+                                <label>{{ order[$index].cart.totalQty}}</label>
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label">Order Status:</label>
+                            <div class="col-sm-10">
+                                <label>{{ order[$index].status}}</label>
+                            </div>
+                        </div>
 
-                {{ if products }}
-                <div class="row">
-                    <h3 class="title">Cart 购物车</h3>
-                    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-                        <ul class="list-group">
-                            {{ each products }}
-                            <li class="list-group-item">
-                                <span class="badge"> {{ products[$index].qty }} </span>
-                                <strong> {{ products[$index].item.goodsName }} </strong>
-                                <span class="label label-success">￥{{ products[$index].item.price }}</span>
-                                <div class="btn-group">
-                                    <button class="btn btn-primary btn-xs dropdown-toggle" type="button"
-                                        data-toggle="dropdown">Action
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="product_detail?id={{ products[$index].item._id }}">Detail</a></li>
-                                        <li><a href="#">Remove</a></li>
-                                </div>
-                            </li>
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label">Check Your Goods :</label>
+                            {{each order[$index].cart.items value i }}
+
+                            <div class="col-sm-10">
+                                <a href="product_detail?id={{order[$index].cart.items[i].item._id }}"
+                                    style="color: seagreen;">Goods Name:
+                                    {{order[$index].cart.items[i].item.goodsName }}</a><br>
+                            </div>
                             {{/each}}
-                        </ul>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-                        <strong>Total:￥{{ totalPrice }}</strong>
-                    </div>
-                </div>
-                {{if (session.user != null) }}
-                <div class="row">
-                    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-                        <a href="/checkout" type="button" class="btn btn-success">Checkout</a>
-                    </div>
-                </div>
-                {{/if}}
-                <br>
-                <div class="row">
-                    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-                        <a href="/remove_all" type="button" class="btn btn-success"
-                            style="color:rgb(253, 43, 130)">Remove All</a href="remove_all">
-                    </div>
-                </div>
+                        </div>
 
-                {{ else }}
 
-                <div class="row">
-                    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-                        <h2>No Item in Cart</h2>
-                        <a href="/product">And go to see something?<br>去逛逛？</a>
+                        <div>
+                        <a href="/order_detail?id={{ order[$index]._id }}" class="btn btn-primary"
+                            >Order Detail<br>订单详情</a>
+                        </div>
+
+                        <div id="1" class="collapse">
+
+                            <div class="form-group required">
+                                <label class="col-sm-2 control-label">Check Your Info:</label>
+                                <div class="col-sm-10">
+                                    <label>Name: {{ order[$index].name}}</label><br>
+                                    <label>Email: {{ order[$index].email}}</label><br>
+                                    <label>Phone: {{ order[$index].phone}}</label><br>
+                                    <label>Address: {{ order[$index].address}}</label><br>
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                {{each order[$index].cart.items value i }}
+                                <label class="col-sm-2 control-label">Check Your Goods :</label>
+                                <div class="col-sm-10">
+                                    <a href="product_detail?id={{order[$index].cart.items[i].item._id }}"
+                                        style="color: seagreen;">Goods ID:
+                                        {{order[$index].cart.items[i].item._id }}</a><br>
+                                    <label>Goods Name: {{order[$index].cart.items[i].item.goodsName }}</label><br>
+                                    <img src="{{order[$index].cart.items[i].item.imgPath }}" style="width: 300px;"><br>
+                                    <label>Each Price:￥
+                                        {{order[$index].cart.items[i].item.current_price }}</label><br>
+                                    <label>Quantity: {{order[$index].cart.items[i].qty }}</label><br>
+                                    <label>Price:￥ {{order[$index].cart.items[i].price }}</label>
+                                </div>
+                                {{/each}}
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                    <!-- /My Order -->
+                    {{/each}}
+
+                    {{ else }}
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+                            <h2>No Order.
+                                <br>Please Login or Buy Something
+                                <br>空空如也，请登陆或买点东东吧。
+                            </h2>
+                            <a href="/product">And go to see something?<br>去逛逛？</a>
+                        </div>
                     </div>
-                </div>
-                {{/if }}
+                    {{/if }}
 
-                <!-- <div class="col-sm-5">
+                    <!-- <div class="col-sm-5">
                     <img src="images/nursery-decoration-1963815_960_720.jpg" title="iPhone" alt="iPhone">
                 </div> -->
+                </div>
             </div>
         </div>
-        </div>
+
     </section>
 
     <!-- Process -->
