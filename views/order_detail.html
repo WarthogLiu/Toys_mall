@@ -77,15 +77,15 @@
                                     <div class="form-group">
                                         <label>Status:</label>
                                         <br>
-                                        <% if (order.status == "Paid") { %>
+                                        <% if (order.status == "Paid" || order.status == "Successful") { %>
                                         <label style="color: rgb(18, 180, 18);"><%- order.status %></label>
-                                        <% } else if (order.status == "Processing") { %>
+                                        <% } else if (order.status == "Processing" || order.status == "Unprocessing") { %>
                                         <label style="color: rgb(190, 164, 14);"><%- order.status %></label>
                                         <% } else if (order.status == "Closed") { %>
                                         <label style="color: rgb(0, 0, 0);"><%- order.status %></label>
-                                        <% } else if (order.status == "Received") { %>
+                                        <% } else if (order.status == "Received" || order.status == "Solved") { %>
                                         <label style="color: rgb(14, 103, 145);"><%- order.status %></label>
-                                        <% } else if (order.status == "Dispute") { %>
+                                        <% } else if (order.status == "Dispute" || order.status == "Dispute Resolution") { %>
                                         <label style="color: rgb(194, 31, 31);"><%- order.status %></label>
                                         <% } %>
                                     </div>

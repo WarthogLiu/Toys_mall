@@ -54,15 +54,15 @@
                                 <div class="form-group">
                                     <label>Status:</label>
                                     <br>
-                                    <% if (lists.status == "Paid") { %>
+                                    <% if (lists.status == "Paid" || lists.status == "Successful") { %>
                                     <label style="color: rgb(18, 180, 18);"><%- lists.status %></label>
-                                    <% } else if (lists.status == "Processing") { %>
+                                    <% } else if (lists.status == "Processing" || lists.status == "Unprocessing") { %>
                                     <label style="color: rgb(190, 164, 14);"><%- lists.status %></label>
                                     <% } else if (lists.status == "Closed") { %>
                                     <label style="color: rgb(0, 0, 0);"><%- lists.status %></label>
-                                    <% } else if (lists.status == "Received") { %>
+                                    <% } else if (lists.status == "Received" || lists.status == "Solved") { %>
                                     <label style="color: rgb(14, 103, 145);"><%- lists.status %></label>
-                                    <% } else if (lists.status == "Dispute") { %>
+                                    <% } else if (lists.status == "Dispute" || lists.status == "Dispute Resolution") { %>
                                     <label style="color: rgb(194, 31, 31);"><%- lists.status %></label>
                                     <% } %>
                                 </div>

@@ -79,10 +79,8 @@
                                         <td style="color: rgb(190, 164, 14);"><%- lists[i].status %></td>
                                         <% } else if (lists[i].status == "Received" || lists[i].status == "Solved") { %>
                                         <td style="color: rgb(14, 103, 145);"><%- lists[i].status %></td>
-                                        <% } else if (lists[i].status == "Dispute") { %>
+                                        <% } else if (lists[i].status == "Dispute" || lists[i].status == "Dispute Resolution") { %>
                                         <td style="color: rgb(194, 31, 31);"><%- lists[i].status %></td>
-                                        <% } else if (lists[i].status == "Solved") { %>
-                                        <td style="color: rgb(74, 6, 199);"><%- lists[i].status %></td>
                                         <% } else if (lists[i].status == "Closed") { %>
                                         <td style="color: rgb(0, 0, 0);"><%- lists[i].status %></td>
                                         <% } %>
