@@ -4,13 +4,13 @@
 Graduation project of DJTU 2020  
 本项目为大连交通大学2020届毕业设计  
   
-## 本地文件结构
+# 本地文件结构
 views:代渲染视图文件  
 routers:路由文件  
 public：静态资源  
 node_modules:npm插件  
   
-## 路由设计  
+# 路由设计  
 | 路由 | 方法 | get参数 | post参数 | 是否需要登录 | 备注 |
 | --- | --- | --- | --- | --- | --- |
 | /index | GET | | | | 渲染首页 |
@@ -25,7 +25,7 @@ node_modules:npm插件
 | /modify | GET | /modify_goods | | | 渲染修改详情页面 |  
 
   
-## NOTE
+# NOTE
 Express获取get请求参数  
 req.query  
 
@@ -50,7 +50,7 @@ parseFloat()
 var id = req.query.id
     id = id.replace("\"","").replace("\"","");  
 
-## 已知漏洞  
-# index.html  
+# 已知漏洞  
+## index.html  
 在index页面代码中，商品展示数目写死，当写定数目小于数据库中实际商品数目时，将会报错。  
 原因：无法获取到不存在的商品信息，故出错，无法加载页面，并报错信息中没有体现。  
