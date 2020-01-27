@@ -1,7 +1,6 @@
 // 导入模块
 const express = require('express')
 const mongoose = require('mongoose')
-var hbs = require('express-handlebars')
 
 const Proc_order = require('./routes/proc_order')
 const History = require('./routes/history')
