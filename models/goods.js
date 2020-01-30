@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
+const db_connect = require('../models/db_connect')
+
 //连接网络数据库
-mongoose.connect('mongodb+srv://admin:8638938lzY@mymongodb-rdfvx.azure.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
+mongoose.connect(db_connect, { useNewUrlParser: true });
 
 var Goods_schema = mongoose.Schema;
 
@@ -14,7 +16,7 @@ var goodsSchema = new Goods_schema({
         require: true
     },
     age: {
-        // 适合年龄段 3+ 3- all
+        // 适合年龄段如 3+ 3- all
         type: String,
         require: true,
     },

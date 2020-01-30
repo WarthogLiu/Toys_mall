@@ -1,6 +1,8 @@
 var mongoose = require('mongoose')
+const db_connect = require('../models/db_connect')
+
 //连接网络数据库
-mongoose.connect('mongodb+srv://admin:8638938lzY@mymongodb-rdfvx.azure.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true })
+mongoose.connect(db_connect, { useNewUrlParser: true });
 
 var User_schema = mongoose.Schema
 
