@@ -1,7 +1,8 @@
 # Graduation_Project
 Graduation project of DJTU 2020  
 本项目为大连交通大学2020届毕业设计  
-  
+项目基本功能实现，数据库具备增删改查，目前说明文档和软件任然在施工中……  
+
 # 本地文件结构
 views: 代渲染视图文件  
 routers: 路由文件  
