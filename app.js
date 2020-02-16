@@ -1,7 +1,13 @@
 // 导入模块
 const express = require('express')
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
+const session = require('express-session')
+const MongoStore = require('connect-mongo')(session) //将 session 存入数据库
 
+// 导入方法
+
+// 导入路由
 const Proc_order = require('./routes/proc_order')
 const History = require('./routes/history')
 const Goods_detail = require('./routes/goods_detail')
@@ -15,7 +21,6 @@ const new_arrival = require('./routes/new_arrival')
 const admin = require('./routes/admin')
 const sub_cont = require('./routes/sub_cont')
 const cart = require('./routes/cart')
-// const Cart = require('../models/cart')
 const index = require('./routes/index')
 const register = require('./routes/register')
 const login = require('./routes/login')
@@ -27,10 +32,9 @@ const product = require('./routes/product')
 const checkout = require('./routes/checkout')
 const my_order = require('./routes/my_order')
 const Search = require('./routes/search')
-// const shopping_cart = require('./routes/shopping_cart')
-const bodyParser = require('body-parser')
-const session = require('express-session')
-const MongoStore = require('connect-mongo')(session) //将 session 存入数据库 
+
+// 定义变量
+var url = 'localhost:3000/index'
 
 //测试模块
 
@@ -41,7 +45,7 @@ const path = require('path')
 const app = express()
 
 app.use(express.static('public'));
-app.use('/upload',express.static('upload'));// 图片上传文件夹
+app.use('/upload', express.static('upload'));// 图片上传文件夹
 app.use(express.static('models'));
 app.use('/public', express.static(path.join(__dirname, './public/')))
 app.use('/node_modules/', express.static(path.join(__dirname, './node_modules/')))
@@ -141,5 +145,5 @@ app.use(new_arrival)
 
 //运行监听
 app.listen(3000, function () {
-  console.log('listening port 3000...')
+  console.log('Please go to ' + url);
 })
