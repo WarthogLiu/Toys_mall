@@ -6,7 +6,7 @@ Graduation project of DJTU 2020
 
 # 如何开始  
 1.下载或git命令行复制。  
-2.在项目文件夹下调出命令行工具，输入 npm init 待加载完成即可。  
+2.在项目文件夹下调出命令行工具，输入 npm install 待加载完成即可。  
 3.同第2步，打开命令行工具后，输入 node app.js 或 nodemon app 待打出“正在监听xxxx端口”即可在浏览器输入localhost:[端口号]/index 进入主页  
 
 # 本地文件结构
@@ -25,11 +25,11 @@ package.json: 项目npm配置信息
 | /index       | GET  |                  |                         |              | 渲染首页           |
 | /regitser    | GET  |                  |                         |              | 渲染注册页面       |
 | /register    | POST |                  | email,username,password |              | 处理注册请求       |
-| /login       | GET  | req.session.user |                         |              | 渲染登陆页面       |
+| /login       | GET  | req.session.user = null |                  |              | 渲染登陆页面       |
 | /login       | POST |                  | email,password          |              | 处理登陆请求       |
-| /logout      | GET  |                  |                         |              |                    | 处理退出请求 |
+| /logout      | GET  |                  |                         |              | 处理登出请求       |
 | /new_arrival | GET  |                  |                         |              | 新货上架           |
-| /new_arrival | POST |                  | 数据库对象              |              | 存放新产品信息     |
+| /new_arrival | POST |                  | 数据库对象               |              | 存放新产品信息     |
 | /modify      | GET  | /modify          |                         |              | 渲染待修改列表页面 |
 | /modify      | GET  | /modify_goods    |                         |              | 渲染修改详情页面   |
 

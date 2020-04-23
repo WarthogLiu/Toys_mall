@@ -34,7 +34,7 @@ const my_order = require('./routes/my_order')
 const Search = require('./routes/search')
 
 // 定义变量
-var url = 'localhost:3000/index'
+var url = 3000;
 
 //测试模块
 
@@ -144,6 +144,7 @@ app.use(new_arrival)
 
 
 //运行监听
-app.listen(3000, function () {
-  console.log('Please go to ' + url);
+app.listen(url, function () {
+  console.log('Server listening ' + url + ' Port...');
+  console.log('Please go to "localhost:' + url + '/index"');
 })
